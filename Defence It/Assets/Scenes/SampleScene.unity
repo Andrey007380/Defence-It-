@@ -516,9 +516,9 @@ GameObject:
   - component: {fileID: 1664402743}
   - component: {fileID: 1664402742}
   - component: {fileID: 1664402740}
-  - component: {fileID: 1664402741}
   - component: {fileID: 1664402745}
   - component: {fileID: 1664402739}
+  - component: {fileID: 1664402741}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -555,10 +555,10 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &1664402741
-CapsuleCollider:
+--- !u!65 &1664402741
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -567,10 +567,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1664402742
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -619,7 +618,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664402738}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1664402744
 Transform:
   m_ObjectHideFlags: 0
@@ -628,7 +627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664402738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 500, y: 18, z: 500}
+  m_LocalPosition: {x: 500, y: 0.82, z: 500.007}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1870299518}
@@ -647,9 +646,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d18439cf25d6b4f8fb111316025e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 15
+  angularSpeed: 0.6
   rotationX: 0
   rotationY: 0
+  transformX: 0
+  transformY: 0
   joystick: {fileID: 2103542858}
 --- !u!1001 &1702006233
 PrefabInstance:
