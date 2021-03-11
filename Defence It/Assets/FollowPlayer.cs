@@ -6,12 +6,15 @@ public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
     public Vector3 offset;
+    public float SmoothFolow = 0.125f;
 
     void Start()
     {
     }
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = player.position + offset; //follow object
+        Vector3 desiredPosition = player.position + offset;
+        Vector3 SmoothPosition = Vector3.Lerp(transform.position, desiredPosition, SmoothFolow);
+        transform.position = SmoothPosition; 
     }
 }
