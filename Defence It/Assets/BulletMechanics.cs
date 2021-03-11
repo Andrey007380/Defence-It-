@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BulletMechanics : MonoBehaviour
 {
-    public Rigidbody rigidBody;
+    public GameObject Projectile;
 
     void OnTriggerEnter(Collider co)
     {
-        Destroy(gameObject);
+        Destroy(Projectile);
+
     }
 }

@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29d6930478fa3f4193c0744f1e367e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 4629190479245867726}
+  Projectile: {fileID: 5890560936853567077}
 --- !u!1 &9126921595194253319
 GameObject:
   m_ObjectHideFlags: 0
