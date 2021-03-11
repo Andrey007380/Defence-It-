@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    public float moveSpeed = 0.5f;
+    public float moveSpeed = 7f;
     public float rotationX;
     public float rotationY;
 
@@ -20,11 +20,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rotationX = joystick.Horizontal * moveSpeed;
-        transform.Translate(rotationX * moveSpeed, 0, 0 );
+        rotationX = joystick.Horizontal * moveSpeed * Time.deltaTime;
+        rotationY = joystick.Vertical * moveSpeed*Time.deltaTime;
 
-        rotationY = joystick.Vertical * moveSpeed;
-        transform.Translate(0, 0, rotationY * moveSpeed);
+        transform.Translate(rotationX  , 0, rotationY );
 
     }
 }
