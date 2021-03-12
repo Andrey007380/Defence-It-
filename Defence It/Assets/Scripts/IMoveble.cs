@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IMoveble 
 {
-    void Move(Vector3 point);
+    void Move(GameObject point);
 }
