@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 1664402745}
   - component: {fileID: 1664402739}
   - component: {fileID: 1664402741}
+  - component: {fileID: 1664402746}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -627,7 +628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664402738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 500, y: 0.82, z: 500.007}
+  m_LocalPosition: {x: 500, y: 0.82, z: 500.15}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1870299518}
@@ -646,13 +647,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d18439cf25d6b4f8fb111316025e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 10
   angularSpeed: 0.6
-  rotationX: 0
-  rotationY: 0
   transformX: 0
   transformY: 0
   joystick: {fileID: 2103542858}
+--- !u!114 &1664402746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664402738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990fa48c06d95e74da4c814d4adf83f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    basicStats: 0
+  armor:
+    basicStats: 0
+  damage:
+    basicStats: 0
 --- !u!1001 &1702006233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,8 +799,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870299517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.464, z: 0.92}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.464, z: 0.82}
+  m_LocalScale: {x: -0.17, y: -0.02, z: 0.65}
   m_Children: []
   m_Father: {fileID: 1664402744}
   m_RootOrder: 0
