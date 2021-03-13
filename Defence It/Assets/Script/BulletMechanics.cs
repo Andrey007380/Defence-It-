@@ -10,7 +10,6 @@ public class BulletMechanics : MonoBehaviour
     {
         if (co.name != "Player")
         {
-
             Destroy(Projectile);
         }
     }
