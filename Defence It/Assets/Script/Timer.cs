@@ -6,9 +6,15 @@ public class Timer : MonoBehaviour
     [SerializeField]
     Text timerup;
 
+    public Text killedEnemies;
+
 
     float current_time = 0;
+    public void Start() {
+      
 
+       
+    }
 
     public void Update()
     {
@@ -17,6 +23,12 @@ public class Timer : MonoBehaviour
         int minute = (int)(current_time / 60) % 60;
         string Timerstring = string.Format("{0:00}:{1:00}", minute, seconds);
         timerup.text = Timerstring;
+        KilledEnemies();
+    }
+    public void KilledEnemies()
+    {
+        killedEnemies.text = FindObjectOfType<GameStatsMechanics>().death.ToString();
 
+       
     }
 }
