@@ -19,8 +19,13 @@ public class FollowingEnemy : EnemyBaseClass
 
     public override void Move(GameObject point)
     {
+        PhisicBody.isStopped = false;
         PhisicBody.SetDestination(point.transform.position);
         base.Move(point);
+    }
+    public void StopMoving()
+    {
+        PhisicBody.isStopped = true; 
     }
 
     public override void TakeDamage(float damage, string attakerName)
