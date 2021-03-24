@@ -15,14 +15,11 @@ public void Update()
         int seconds = (int)(current_time % 60);
         int minute = (int)(current_time / 60) % 60;
         string Timerstring = string.Format("{0:00}:{1:00}", minute, seconds);
-        timerup.text = Timerstring;
+        timerup.text = "Live time" + Timerstring;
         KilledEnemies();
     }
     public void KilledEnemies()
     {
-
-        killedEnemies.text = BulletMechanics.death.ToString();
-
-       
+        killedEnemies.text = "Kills: " + BulletMechanics.death.ToString();
     }
 }
