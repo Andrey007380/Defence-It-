@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba41d56990745c342aa96126d925b216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemie: {fileID: 8779848754955139708}
   HealthAbowCharacter: {fileID: 8779848753879671416}
 --- !u!1 &8779848754955139708
 GameObject:
@@ -323,7 +322,7 @@ GameObject:
   - component: {fileID: 8779848755225385480}
   - component: {fileID: 8779848755225385483}
   m_Layer: 5
-  m_Name: HealthAbowCharacter (1)
+  m_Name: HealthAbowCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

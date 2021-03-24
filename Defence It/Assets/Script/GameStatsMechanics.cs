@@ -4,9 +4,8 @@ public class GameStatsMechanics : MonoBehaviour
 {
     public int health;
     public int maxHealth = 100;
-    public Stats armor;
-    public int damage;
-    public int death = 0;
+    public int armor;
+    public int death;
 
 
     public HealthBar healthBar;
@@ -19,18 +18,10 @@ public class GameStatsMechanics : MonoBehaviour
     }
 
 
-   public int TakeDamage(int damage = 20)
+   public void TakeDamage(int damage)
     {
-      int value = health -= damage;
-        
-        healthBar.SetHealth(health);
-
-        if(value <= 0)
-        {
-            death++;
-            
-        }
-        return value;
+      health -= damage;
+      healthBar.SetHealth(health);
     }
     
 }

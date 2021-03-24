@@ -159,7 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 5890560936853567077}
-  gameStats: {fileID: 0}
 --- !u!1 &9126921595194253319
 GameObject:
   m_ObjectHideFlags: 0
