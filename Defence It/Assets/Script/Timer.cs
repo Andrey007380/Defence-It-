@@ -5,18 +5,11 @@ public class Timer : MonoBehaviour
 {
     [SerializeField]
     Text timerup;
-
     public Text killedEnemies;
 
-
     float current_time = 0;
-    public void Start() {
-      
 
-       
-    }
-
-    public void Update()
+public void Update()
     {
         current_time += 1 * Time.deltaTime;
         int seconds = (int)(current_time % 60);
@@ -27,7 +20,8 @@ public class Timer : MonoBehaviour
     }
     public void KilledEnemies()
     {
-        killedEnemies.text = FindObjectOfType<GameStatsMechanics>().death.ToString();
+
+        killedEnemies.text = BulletMechanics.death.ToString();
 
        
     }
