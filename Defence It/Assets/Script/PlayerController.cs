@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float transformX;
     public float transformY;
 
-    public Joystick joystick;
+    public FixedJoystick joystick;
     public Rigidbody rigidbody;
 
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         transformX = joystick.Horizontal * moveSpeed;
         transformY = joystick.Vertical * moveSpeed;
         rigidbody.velocity = new Vector3(transformX * Time.deltaTime, 0, transformY * Time.deltaTime);
+        
 
 
 

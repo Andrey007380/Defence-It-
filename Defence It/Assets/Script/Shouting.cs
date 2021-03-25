@@ -8,6 +8,7 @@ public class Shouting : MonoBehaviour
     public Transform PlayerPoint;
     public GameObject BulletPrefab;
 
+
     public float bulletForce = 15f;
     void Update()
     {
@@ -23,6 +24,10 @@ public class Shouting : MonoBehaviour
             {
                 Aim();
             }
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                Aim();
+            }
 
         }
 
@@ -33,8 +38,9 @@ public class Shouting : MonoBehaviour
         RaycastHit _hit;
         if (Application.platform == RuntimePlatform.Android) 
         {
-            Ray touchPos = Camera.main.ScreenPointToRay(Input.GetTouch(1).position);
-            if (Physics.Raycast(touchPos, out _hit))
+            Ray touchPos = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Ray touchPos1 = Camera.main.ScreenPointToRay(Input.GetTouch(1).position);
+            if (Physics.Raycast(touchPos1, out _hit)|| Physics.Raycast(touchPos, out _hit))
             {
                 PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
                 FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
