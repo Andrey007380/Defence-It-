@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shouting : MonoBehaviour
 {
     public Transform FirePoint;
+    public Transform PlayerPoint;
     public GameObject BulletPrefab;
 
     public float bulletForce = 15f;
@@ -35,7 +36,9 @@ public class Shouting : MonoBehaviour
             Ray touchPos = Camera.main.ScreenPointToRay(Input.GetTouch(1).position);
             if (Physics.Raycast(touchPos, out _hit))
             {
+                PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
                 FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                
             }
             Shoot();
         }
@@ -44,8 +47,10 @@ public class Shouting : MonoBehaviour
             Ray touchPos = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(touchPos, out _hit))
         {
-            FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
-        }
+                PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                
+            }
         Shoot();
         }
         

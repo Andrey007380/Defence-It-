@@ -15,7 +15,7 @@ public void Update()
         int seconds = (int)(current_time % 60);
         int minute = (int)(current_time / 60) % 60;
         string Timerstring = string.Format("{0:00}:{1:00}", minute, seconds);
-        timerup.text = "Live time" + Timerstring;
+        timerup.text = "Live time: " + Timerstring;
         KilledEnemies();
     }
     public void KilledEnemies()
