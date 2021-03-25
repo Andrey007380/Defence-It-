@@ -22,7 +22,6 @@ public class BulletMechanics : MonoBehaviour
             {
                 Destroy(co.gameObject);
                 death++;
-                Debug.Log("death: "+ death);
                 
             }
 

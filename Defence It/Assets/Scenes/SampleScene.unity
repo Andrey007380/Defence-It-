@@ -1043,7 +1043,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Kills: '
+  m_Text: 
 --- !u!222 &1179216951
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1690,6 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 1870299518}
+  PlayerPoint: {fileID: 1664402744}
   BulletPrefab: {fileID: 5890560936853567077, guid: effe53cbcb0fca449ba46e34148e0de9, type: 3}
   bulletForce: 25
 --- !u!54 &1664402740
@@ -1706,7 +1707,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &1664402741
 BoxCollider:
@@ -1777,7 +1778,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664402738}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 500, y: 0.82, z: 500.15}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
@@ -1798,11 +1799,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d18439cf25d6b4f8fb111316025e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 400
   angularSpeed: 0.6
   transformX: 0
   transformY: 0
   joystick: {fileID: 2103542858}
+  rigidbody: {fileID: 0}
 --- !u!114 &1664402746
 MonoBehaviour:
   m_ObjectHideFlags: 0
