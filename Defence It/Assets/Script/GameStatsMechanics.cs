@@ -14,7 +14,7 @@ public class GameStatsMechanics : MonoBehaviour
     void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
-
+        
     }
 
 
