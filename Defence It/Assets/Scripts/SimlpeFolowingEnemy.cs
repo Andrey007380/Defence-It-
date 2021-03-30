@@ -17,9 +17,15 @@ public class SimlpeFolowingEnemy : MonoBehaviour
     {
         for (; ; )
         {if(Target!= null)
-            EnemyBase.Move(Target);
-
-            yield return new WaitForSeconds(10);
+            
+            Debug.Log((Target.transform.position - this.transform.position).magnitude);
+            if ((Target.transform.position - this.transform.position).magnitude <= 40f)
+            {
+                EnemyBase.StopMoving();
+                Debug.Log("Attack");
+            }
+            else { EnemyBase.Move(Target); }
+            yield return new WaitForSeconds(1);
 
         }
     }
