@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Shouting : MonoBehaviour
 {
-    public Transform FirePoint;
-    public Transform PlayerPoint;
-    public GameObject BulletPrefab;
+    public Transform FirePoint; // Place from where bullets shoot
+    public Transform PlayerPoint; // Point in which player look at
+    public GameObject BulletPrefab; // bullet
 
 
     public float bulletForce = 15f;
@@ -20,14 +20,14 @@ public class Shouting : MonoBehaviour
         if (Input.touchCount > 0)
         {
 
-            if (Input.GetTouch(1).phase == TouchPhase.Began)
+            if (Input.touches[1].phase == TouchPhase.Began)
             {
                 Aim();
             }
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+           /* if (Input.touches[0].phase == TouchPhase.Began)
             {
                 Aim();
-            }
+            }*/
 
         }
 
@@ -35,17 +35,26 @@ public class Shouting : MonoBehaviour
     }
     public void Aim()
     {
+        RaycastHit _hit1;
         RaycastHit _hit;
-        if (Application.platform == RuntimePlatform.Android) 
+        
+
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) 
         {
-            Ray touchPos = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            Ray touchPos1 = Camera.main.ScreenPointToRay(Input.GetTouch(1).position);
-            if (Physics.Raycast(touchPos1, out _hit)|| Physics.Raycast(touchPos, out _hit))
+            Ray touchPos1 = Camera.main.ScreenPointToRay(Input.touches[1].position);
+            if (Physics.Raycast(touchPos1, out _hit1))
+            {
+                PlayerPoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
+                FirePoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
+
+            }
+
+          /*  Ray touchPos = Camera.main.ScreenPointToRay(Input.touches[0].position);
+            if (Physics.Raycast(touchPos, out _hit))
             {
                 PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
                 FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
-                
-            }
+            }*/
             Shoot();
         }
         else

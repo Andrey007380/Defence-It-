@@ -25,9 +25,5 @@ public class PlayerController : MonoBehaviour
         transformY = joystick.Vertical * moveSpeed;
         rigidbody.velocity = new Vector3(transformX * Time.deltaTime, 0, transformY * Time.deltaTime);
         
-
-
-
-
     }
 }
