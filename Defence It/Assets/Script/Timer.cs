@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     Text timerup;
     public Text killedEnemies;
+    public Text dropcounter;
 
     float current_time = 0;
 
@@ -21,5 +22,6 @@ public void Update()
     public void KilledEnemies()
     {
         killedEnemies.text = "Kills: " + BulletMechanics.death.ToString();
+        dropcounter.text = Drop.bullets.ToString();
     }
 }

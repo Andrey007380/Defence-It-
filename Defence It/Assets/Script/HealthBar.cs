@@ -23,5 +23,6 @@ public class HealthBar : MonoBehaviour
         {
             HealthAbowCharacter.transform.rotation = Camera.main.transform.rotation;
         }
+        
     }
 }
