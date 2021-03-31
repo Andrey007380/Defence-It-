@@ -1,25 +1,39 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class BulletMechanics : MonoBehaviour
 {
     public GameObject Projectile;
+    public int damage = 20;
+    public static int death = 0;
+    public GameObject Drop;
 
 
     void OnTriggerEnter(Collider co)
     {
-       /* gameStats = FindObjectOfType<GameStatsMechanics>();
-*/
-
+      
         Destroy(Projectile);
+        
         if (co.tag.Equals("Enemies"))
         {
-            co.gameObject.GetComponent<GameStatsMechanics>().health = FindObjectOfType<GameStatsMechanics>().TakeDamage();
+            GameStatsMechanics gameStatsMechanics =  co.gameObject.GetComponent<GameStatsMechanics>();
+            gameStatsMechanics.TakeDamage(damage);
+
             Debug.Log(co.gameObject.name + co.gameObject.GetComponent<GameStatsMechanics>().health);
-            
-           
+
+            if(co.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
+            {
+                Destroy(co.gameObject);
+                Instantiate(Drop, transform.position, Drop.transform.rotation);
+                death++;
+                
+            }
+
+
+
 
         }
+        
     }
+
 }
