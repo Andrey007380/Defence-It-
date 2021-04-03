@@ -22,6 +22,7 @@ public class GameStatsMechanics : MonoBehaviour
    public void TakeDamage(int damage)
     {
       health -= damage;
+        
       healthBar.SetHealth(health);
     }
     
