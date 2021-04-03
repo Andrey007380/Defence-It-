@@ -5,22 +5,22 @@ using UnityEngine;
 public abstract class EnemyBaseClass:IDamageble, IAttaker,IMoveble
 {
     public string name { get; }
-    public float heath { get; }
-    public float armor { get; }
-    public float damage { get; }
-    public float movmentSpeed { get; }
-    public float attackSpeed { get; }
+    public int health { get; protected set; }
+    public float armor { get; protected set; }
+    public int damage { get; protected set; }
+    public float movmentSpeed { get; protected set; }
+    public float attackSpeed { get; protected set; }
     public float attackRange { get; }
 
-    public EnemyBaseClass(string Name,float Health,float Armor, float Damage,float MovmentSpeed,float AttackSpeed)
+    public EnemyBaseClass(string Name,int Health,float Armor, int Damage,float MovmentSpeed,float AttackSpeed,float AttackRange)
     {
         name = Name;
-        heath = Health;
+        health = Health;
         armor = Armor;
         damage = Damage;
         movmentSpeed = MovmentSpeed;
         attackSpeed = AttackSpeed;
-        attackRange = 2.0f;
+        attackRange = AttackRange;
     }
 
     public virtual void DealDamage(GameObject target)
@@ -33,8 +33,9 @@ public abstract class EnemyBaseClass:IDamageble, IAttaker,IMoveble
         Debug.Log(name + " переместился в позицию " +point);
     }
 
-    public virtual void TakeDamage(float damage,string attakerName)
+    public virtual void TakeDamage(int damage,string attakerName)
     {
-        Debug.Log(name + "получил урон от " + attakerName+" в размере "+damage);
+        Debug.Log(name + " получил урон от " + attakerName+" в размере "+damage);
     }
+    public virtual void Died() { Debug.Log(name + " Погиб" ); }
 }

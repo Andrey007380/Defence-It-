@@ -22,6 +22,6 @@ public void Update()
     public void KilledEnemies()
     {
         killedEnemies.text = "Kills: " + BulletMechanics.death.ToString();
-        dropcounter.text = Drop.bullets.ToString();
+        //dropcounter.text = Drop.bullets.ToString();
     }
 }

@@ -19,9 +19,9 @@ public class BulletMechanics : MonoBehaviour
             GameStatsMechanics gameStatsMechanics =  co.gameObject.GetComponent<GameStatsMechanics>();
             gameStatsMechanics.TakeDamage(damage);
 
-            Debug.Log(co.gameObject.name + co.gameObject.GetComponent<GameStatsMechanics>().health);
+            Debug.Log(co.gameObject.name + gameStatsMechanics.health);
 
-            if(co.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
+            if(gameStatsMechanics.health <= 0)
             {
                 Destroy(co.gameObject);
                 Instantiate(Drop, transform.position, Drop.transform.rotation);
