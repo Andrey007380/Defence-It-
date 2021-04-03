@@ -13,8 +13,9 @@ public class BulletMechanics : MonoBehaviour
     {
       
         Destroy(Projectile);
-        
-        if (co.tag.Equals("Enemies"))
+        Destroy(Projectile, 3);
+
+        if (co.CompareTag("Enemies"))
         {
             GameStatsMechanics gameStatsMechanics =  co.gameObject.GetComponent<GameStatsMechanics>();
             gameStatsMechanics.TakeDamage(damage);
@@ -35,5 +36,6 @@ public class BulletMechanics : MonoBehaviour
         }
         
     }
+   
 
 }

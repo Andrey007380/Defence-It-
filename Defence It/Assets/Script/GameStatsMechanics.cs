@@ -8,6 +8,7 @@ public class GameStatsMechanics : MonoBehaviour
     public int death;
 
 
+
     public HealthBar healthBar;
 
 
@@ -24,4 +25,5 @@ public class GameStatsMechanics : MonoBehaviour
       healthBar.SetHealth(health);
     }
     
+   
 }

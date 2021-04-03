@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    Text timerup;
+    public Text timerup;
     public Text killedEnemies;
     public Text dropcounter;
 

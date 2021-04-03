@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Shouting : MonoBehaviour
 {
@@ -20,11 +21,11 @@ public class Shouting : MonoBehaviour
         if (Input.touchCount > 0)
         {
 
-            if (Input.touches[1].phase == TouchPhase.Began)
+            if (Input.touches[1].phase == TouchPhase.Began) //Second touch shooting
             {
                 Aim();
             }
-           /* if (Input.touches[0].phase == TouchPhase.Began)
+           /* if (Input.touches[0].phase == TouchPhase.Began) // First touch shooting
             {
                 Aim();
             }*/
@@ -41,7 +42,10 @@ public class Shouting : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) 
         {
-            Ray touchPos1 = Camera.main.ScreenPointToRay(Input.touches[1].position);
+            if (EventSystem.current.IsPointerOverGameObject()) //Ignore Ui elements
+                return;
+
+            Ray touchPos1 = Camera.main.ScreenPointToRay(Input.touches[1].position); // Second touch position to shoot
             if (Physics.Raycast(touchPos1, out _hit1))
             {
                 PlayerPoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
@@ -49,16 +53,19 @@ public class Shouting : MonoBehaviour
 
             }
 
-          /*  Ray touchPos = Camera.main.ScreenPointToRay(Input.touches[0].position);
-            if (Physics.Raycast(touchPos, out _hit))
-            {
-                PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
-                FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
-            }*/
+            /*  Ray touchPos = Camera.main.ScreenPointToRay(Input.touches[0].position); // First touch position to shoot
+              if (Physics.Raycast(touchPos, out _hit))
+              {
+                  PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                  FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+              }*/
             Shoot();
         }
         else
         {
+            if (EventSystem.current.IsPointerOverGameObject()) //Ignore Ui elements
+                return;
+
             Ray touchPos = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(touchPos, out _hit))
         {
