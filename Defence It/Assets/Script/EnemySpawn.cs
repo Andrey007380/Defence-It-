@@ -35,23 +35,15 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
-    public void LowerMaxEnemys()
+    public int LowerMaxEnemys()
     {
-        
-        Enemysnow--;
+        int death = BulletMechanics.death;
+        Enemysnow -= death;
+        return Enemysnow;
     }
     public void Update()
     {
-        maxReached = Enemysnow >= enemyMax;
-    }
-    public void HigherMaxEnemys(int amount)
-    {
-        enemyMax += amount;
-    }
-    public void HigherSpawnRade(float amount)
-    {
-        time -= amount;
-
+        maxReached = LowerMaxEnemys() >= enemyMax;
     }
     void OnDrawGizmos()
     {
