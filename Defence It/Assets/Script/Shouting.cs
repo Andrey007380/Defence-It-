@@ -42,6 +42,7 @@ public class Shouting : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) 
         {
+            Application.targetFrameRate = 60;
             if (EventSystem.current.IsPointerOverGameObject()) //Ignore Ui elements
                 return;
 
