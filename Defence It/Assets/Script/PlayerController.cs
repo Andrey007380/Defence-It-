@@ -4,7 +4,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     public float moveSpeed = 100f;
-    public float angularSpeed = 0.5f;
 
     public float transformX;
     public float transformY;

@@ -4,13 +4,13 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    Text timerup;
+    public Text timerup;
     public Text killedEnemies;
     public Text dropcounter;
 
     float current_time = 0;
-
-public void Update()
+    public int avgFrameRate;
+    public void Update()
     {
         current_time += 1 * Time.deltaTime;
         int seconds = (int)(current_time % 60);
@@ -21,7 +21,10 @@ public void Update()
     }
     public void KilledEnemies()
     {
-        killedEnemies.text = "Kills: " + BulletMechanics.death.ToString();
+        float current = 0;
+        current = (int)(1f / Time.unscaledDeltaTime);
+        avgFrameRate = (int)current;
+        killedEnemies.text = "Kills: " + BulletMechanics.death.ToString() /*+ avgFrameRate.ToString() + " FPS"*/;
         dropcounter.text = Drop.bullets.ToString();
     }
 }
