@@ -158,6 +158,7 @@ MonoBehaviour:
   enemyMax: 35
   spawnPos: {x: 0, y: 0, z: 0}
   enemies: {fileID: 8779848754955139708, guid: 8904699ae613c994a829041bb55f3db6, type: 3}
+  death: 0
 --- !u!4 &90440601
 Transform:
   m_ObjectHideFlags: 0
@@ -387,6 +388,7 @@ GameObject:
   - component: {fileID: 144792358}
   - component: {fileID: 144792357}
   - component: {fileID: 144792356}
+  - component: {fileID: 144792359}
   m_Layer: 8
   m_Name: Terrain_(1000.0, 0.0, 1000.0)
   m_TagString: Untagged
@@ -452,6 +454,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144792359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144792355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 144792355}
+  player: {fileID: 1269635352}
 --- !u!1 &332461002
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +479,7 @@ GameObject:
   - component: {fileID: 332461005}
   - component: {fileID: 332461004}
   - component: {fileID: 332461003}
+  - component: {fileID: 332461006}
   m_Layer: 8
   m_Name: Terrain_(1000.0, 0.0, 0.0)
   m_TagString: Untagged
@@ -528,6 +545,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332461006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332461002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 332461002}
+  player: {fileID: 1269635352}
 --- !u!1 &465006278
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +570,7 @@ GameObject:
   - component: {fileID: 465006281}
   - component: {fileID: 465006280}
   - component: {fileID: 465006279}
+  - component: {fileID: 465006282}
   m_Layer: 8
   m_Name: Terrain_(0.0, 0.0, -1000.0)
   m_TagString: Untagged
@@ -564,7 +596,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465006278}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 30b7487bd24c74142a76bb622af887e7, type: 2}
   m_TreeDistance: 50
@@ -604,6 +636,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465006282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465006278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 465006278}
+  player: {fileID: 1269635352}
 --- !u!1 &467870409
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +885,7 @@ GameObject:
   - component: {fileID: 778308596}
   - component: {fileID: 778308595}
   - component: {fileID: 778308594}
+  - component: {fileID: 778308597}
   m_Layer: 8
   m_Name: Terrain_(-1000.0, 0.0, 1000.0)
   m_TagString: Untagged
@@ -864,7 +911,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778308593}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 1e555da4544151447881ade6347bc692, type: 2}
   m_TreeDistance: 50
@@ -904,6 +951,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &778308597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778308593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 778308593}
+  player: {fileID: 1269635352}
 --- !u!1 &813936631
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +976,7 @@ GameObject:
   - component: {fileID: 813936634}
   - component: {fileID: 813936633}
   - component: {fileID: 813936632}
+  - component: {fileID: 813936635}
   m_Layer: 8
   m_Name: Terrain_(1000.0, 0.0, -1000.0)
   m_TagString: Untagged
@@ -940,7 +1002,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813936631}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 6968ab2830c6b444581c85a1d1c966eb, type: 2}
   m_TreeDistance: 50
@@ -980,6 +1042,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813936635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813936631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 813936631}
+  player: {fileID: 1269635352}
 --- !u!1 &923144263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1236,7 @@ GameObject:
   - component: {fileID: 1215801345}
   - component: {fileID: 1215801344}
   - component: {fileID: 1215801343}
+  - component: {fileID: 1215801346}
   m_Layer: 8
   m_Name: Terrain_(-1000.0, 0.0, -1000.0)
   m_TagString: Untagged
@@ -1185,7 +1262,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215801342}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: a1fc7b6872000584eb204d8dccf863eb, type: 2}
   m_TreeDistance: 50
@@ -1225,6 +1302,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215801346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215801342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 1215801342}
+  player: {fileID: 1269635352}
+--- !u!1 &1269635352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3326006951706077197, guid: 2d6a297df30eb6e4eb6bd43de6d58f8d, type: 3}
+  m_PrefabInstance: {fileID: 3326006951218736447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1346262935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1424,7 @@ GameObject:
   - component: {fileID: 1486423041}
   - component: {fileID: 1486423040}
   - component: {fileID: 1486423039}
+  - component: {fileID: 1486423042}
   m_Layer: 8
   m_Name: Terrain_(-1000.0, 0.0, 0.0)
   m_TagString: Untagged
@@ -1353,10 +1450,10 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486423038}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 702aca1a45bf9164eacb57038b48b644, type: 2}
-  m_TreeDistance: 50
+  m_TreeDistance: 25
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
@@ -1393,6 +1490,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1486423042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486423038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 1486423038}
+  player: {fileID: 1269635352}
 --- !u!1 &1571240945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,13 +1678,13 @@ Terrain:
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 25ce271d4d374c64e907aad3d67718a4, type: 2}
   m_TreeDistance: 15
-  m_TreeBillboardDistance: 25
+  m_TreeBillboardDistance: 5
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 25
-  m_DetailObjectDistance: 15
+  m_DetailObjectDistance: 13
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 20
+  m_SplatMapDistance: 30
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -1808,6 +1919,7 @@ GameObject:
   - component: {fileID: 1901139229}
   - component: {fileID: 1901139228}
   - component: {fileID: 1901139227}
+  - component: {fileID: 1901139230}
   m_Layer: 8
   m_Name: Terrain_(0.0, 0.0, 1000.0)
   m_TagString: Untagged
@@ -1873,6 +1985,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901139230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901139226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16391cf1657ce784e965fe81f1e51dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 1901139226}
+  player: {fileID: 1269635352}
 --- !u!1 &1918803242
 GameObject:
   m_ObjectHideFlags: 0

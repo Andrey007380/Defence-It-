@@ -12,8 +12,7 @@ public class EnemySpawn : MonoBehaviour
 
     public Vector3 spawnPos; //Spawning an enemy
     public GameObject enemies;
-   
-
+    public int death = 0;
     void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -34,20 +33,27 @@ public class EnemySpawn : MonoBehaviour
             yield return null;
         }
     }
+     
+   
+    public void Update()
+    {
+        
+        maxReached = LowerMaxEnemys() >= enemyMax;
+    }
 
     public int LowerMaxEnemys()
     {
-        int death = BulletMechanics.death;
-        Enemysnow -= death;
+        if (BulletMechanics.death > 0)
+        {
+            death++;
+            if (death > 0) 
+            { 
+            Enemysnow--;
+            death--;
+            }
+        }
         return Enemysnow;
     }
-    public void Update()
-    {
-        maxReached = LowerMaxEnemys() >= enemyMax;
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(spawnPos, spawnRadius);
-    }
+
 }
 

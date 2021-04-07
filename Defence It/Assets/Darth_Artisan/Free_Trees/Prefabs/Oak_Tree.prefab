@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &405256
 Transform:
@@ -93,7 +93,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: 0.041702747, y: 2.6472833, z: 0.09605491}
   m_Size: 5.3144393
-  m_FadeMode: 1
+  m_FadeMode: 0
   m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
