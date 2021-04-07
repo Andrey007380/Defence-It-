@@ -14,7 +14,7 @@ public class LightManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            TimeOfDay +=   Time.deltaTime / 5;
+            TimeOfDay +=   Time.deltaTime / 12;
             TimeOfDay %= 24; //Clamp between 0-24
             UpdateLightning(TimeOfDay / 24);
         }
