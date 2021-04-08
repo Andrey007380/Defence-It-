@@ -15,7 +15,7 @@ public class BulletMechanics : MonoBehaviour
         Destroy(Projectile);
         Destroy(Projectile, 3);
 
-        if (co.CompareTag("Enemies"))
+        if (co.CompareTag("Enemies")|| co.CompareTag("CharacterBase"))
         {
             GameStatsMechanics gameStatsMechanics =  co.gameObject.GetComponent<GameStatsMechanics>();
             gameStatsMechanics.TakeDamage(damage);

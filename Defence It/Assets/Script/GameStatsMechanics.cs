@@ -11,10 +11,11 @@ public class GameStatsMechanics : MonoBehaviour
     public HealthBar healthBar;
 
 
-    void Start()
+    public void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
-        
+        health = maxHealth;
+
     }
 
 
