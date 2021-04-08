@@ -12,7 +12,6 @@ public class EnemySpawn : MonoBehaviour
 
     public Vector3 spawnPos; //Spawning an enemy
     public GameObject enemies;
-    public int death = 0;
     void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -31,6 +30,7 @@ public class EnemySpawn : MonoBehaviour
                 Enemysnow++; // increase the enemy counter
             }
             yield return null;
+            maxReached = Enemysnow >= enemyMax;
         }
     }
      
@@ -38,22 +38,21 @@ public class EnemySpawn : MonoBehaviour
     public void Update()
     {
         
-        maxReached = LowerMaxEnemys() >= enemyMax;
+        
     }
 
-    public int LowerMaxEnemys()
-    {
-        if (BulletMechanics.death > 0)
-        {
-            death++;
-            if (death > 0) 
-            { 
+    public void LowerMaxEnemys()
+    { 
             Enemysnow--;
-            death--;
-            }
-        }
-        return Enemysnow;
+           
     }
-
+    private void OnEnable()
+    {
+        BulletMechanics.OnDeath += LowerMaxEnemys;
+    }
+    private void OnDisable()
+    {
+        BulletMechanics.OnDeath -= LowerMaxEnemys;
+    }
 }
 
