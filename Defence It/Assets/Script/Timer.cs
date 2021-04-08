@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
     public Text timerup;
     public Text killedEnemies;
     public Text dropcounter;
+    private int death = 0;
 
     float current_time = 0;
     public int avgFrameRate;
@@ -24,7 +25,19 @@ public class Timer : MonoBehaviour
         float current = 0;
         current = (int)(1f / Time.unscaledDeltaTime);
         avgFrameRate = (int)current;
-        killedEnemies.text = "Kills: " + BulletMechanics.death.ToString() /*+ avgFrameRate.ToString() + " FPS"*/;
+        killedEnemies.text = "Kills: " + death.ToString() /*+ avgFrameRate.ToString() + " FPS"*/;
         dropcounter.text = Drop.bullets.ToString();
+    }
+    public void KillCouter()
+    {
+        death++;
+    }
+    private void OnEnable()
+    {
+        BulletMechanics.OnDeath += KillCouter;
+    }
+    private void OnDisable()
+    {
+        BulletMechanics.OnDeath -= KillCouter;
     }
 }

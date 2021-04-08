@@ -5,8 +5,10 @@ public class BulletMechanics : MonoBehaviour
 {
     public GameObject Projectile;
     public int damage = 20;
-    public static int death = 0;
+    public delegate void Death();
+    public static event Death OnDeath;
     public GameObject Drop;
+    public static int death = 0;
 
 
     void OnTriggerEnter(Collider co)
@@ -24,9 +26,10 @@ public class BulletMechanics : MonoBehaviour
 
             if(co.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
             {
+                OnDeath();
                 Destroy(co.gameObject);
                 Instantiate(Drop, transform.position, Drop.transform.rotation);
-                death++;
+                
                 
             }
 
