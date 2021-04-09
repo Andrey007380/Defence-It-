@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class Timer : MonoBehaviour
 {
     [SerializeField]
     public Text timerup;
     public Text killedEnemies;
-    public Text dropcounter;
+    public TextMeshProUGUI dropcounter;
     private int death = 0;
 
     float current_time = 0;
