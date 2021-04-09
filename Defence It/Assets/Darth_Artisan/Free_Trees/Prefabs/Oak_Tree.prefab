@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 405256}
   - component: {fileID: 3398346}
   - component: {fileID: 2340482}
-  - component: {fileID: 133055240959303802}
   - component: {fileID: -1658682699680983710}
+  - component: {fileID: -6535448392430381992}
   m_Layer: 0
   m_Name: Oak_Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &405256
 Transform:
@@ -83,33 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &133055240959303802
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191266}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.041702747, y: 2.6472833, z: 0.09605491}
-  m_Size: 5.3144393
-  m_FadeMode: 0
-  m_AnimateCrossFading: 1
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.59687036
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2340482}
-  - screenRelativeHeight: 0.3048931
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2340482}
-  - screenRelativeHeight: 0.09623264
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2340482}
-  m_Enabled: 1
 --- !u!136 &-1658682699680983710
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -124,3 +97,22 @@ CapsuleCollider:
   m_Height: 2.0350099
   m_Direction: 1
   m_Center: {x: -0.030890688, y: 0.7721702, z: 0.035398364}
+--- !u!205 &-6535448392430381992
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191266}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.041702747, y: 2.6472833, z: 0.09605491}
+  m_Size: 5.3144393
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.1018836
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2340482}
+  m_Enabled: 1
