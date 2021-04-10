@@ -7,12 +7,12 @@ public abstract class EnemyBaseClass:IDamageble, IAttaker,IMoveble
     public string name { get; }
     public float heath { get; }
     public float armor { get; }
-    public float damage { get; }
+    public int damage { get; }
     public float movmentSpeed { get; }
     public float attackSpeed { get; }
     public float attackRange { get; }
 
-    public EnemyBaseClass(string Name,float Health,float Armor, float Damage,float MovmentSpeed,float AttackSpeed)
+    public EnemyBaseClass(string Name,float Health,float Armor, int Damage,float MovmentSpeed,float AttackSpeed)
     {
         name = Name;
         heath = Health;
@@ -33,7 +33,7 @@ public abstract class EnemyBaseClass:IDamageble, IAttaker,IMoveble
         Debug.Log(name + " переместился в позицию " +point);
     }
 
-    public virtual void TakeDamage(float damage,string attakerName)
+    public virtual void TakeDamage(int damage,string attakerName)
     {
         Debug.Log(name + "получил урон от " + attakerName+" в размере "+damage);
     }

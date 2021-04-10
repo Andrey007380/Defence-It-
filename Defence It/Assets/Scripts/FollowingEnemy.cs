@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class FollowingEnemy : EnemyBaseClass
 {
     private NavMeshAgent PhisicBody;
-    public FollowingEnemy(string Name, float Health, float Armor, float Damage, float MovmentSpeed, float AttackSpeed,NavMeshAgent Nav) : base(Name, Health, Armor, Damage, MovmentSpeed, AttackSpeed)
+    public FollowingEnemy(string Name, float Health, float Armor, int Damage, float MovmentSpeed, float AttackSpeed,NavMeshAgent Nav) : base(Name, Health, Armor, Damage, MovmentSpeed, AttackSpeed)
     {
         PhisicBody = Nav;
         PhisicBody.speed *= movmentSpeed;
@@ -14,21 +14,25 @@ public class FollowingEnemy : EnemyBaseClass
 
     public override void DealDamage(GameObject target)
     {
-        base.DealDamage(target);
+        if (target.GetComponent<GameStatsMechanics>())
+        {
+            target.GetComponent<GameStatsMechanics>().TakeDamage(damage);
+            
+        }
     }
 
     public override void Move(GameObject point)
     {
         PhisicBody.isStopped = false;
         PhisicBody.SetDestination(point.transform.position);
-        base.Move(point);
+        
     }
     public void StopMoving()
     {
         PhisicBody.isStopped = true; 
     }
 
-    public override void TakeDamage(float damage, string attakerName)
+    public override void TakeDamage(int damage, string attakerName)
     {
         base.TakeDamage(damage, attakerName);
     }

@@ -31,8 +31,8 @@ public class EnemySpawn : MonoBehaviour
         {
             if (!maxReached) {
 
-                EnemiesRespawns = (GameObject[])Resources.LoadAll<GameObject >("Spiders/prefabs") as GameObject[];
-Debug.Log(EnemiesRespawns.Length);
+                EnemiesRespawns = Resources.LoadAll<GameObject >("Spiders/prefabs") as GameObject[];
+
                 spawnPos = GameObject.Find("Player").transform.position; //Spawning an enemy
                 spawnPos += new Vector3( Random.insideUnitSphere.x, 0, Random.insideUnitSphere.z).normalized * spawnRadius;
                 
