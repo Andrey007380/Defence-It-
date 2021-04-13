@@ -2,9 +2,9 @@
 
 public class GameStatsMechanics : MonoBehaviour
 {
-    public int health;
-    public int maxHealth = 100;
-    public int armor;
+    public float health;
+    public float maxHealth = 100f;
+    public float armor;
 
 
 
@@ -19,11 +19,15 @@ public class GameStatsMechanics : MonoBehaviour
     }
 
 
-   public void TakeDamage(int damage)
+   public void TakeDamage(float damage)
     {
       health -= damage;
       healthBar.SetHealth(health);
     }
-    
-   
+
+    public void DeathZone()
+    {
+        health -= 0.01f;
+        healthBar.SetHealth(health);
+    }
 }

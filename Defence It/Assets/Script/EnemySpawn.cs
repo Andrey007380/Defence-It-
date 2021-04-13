@@ -13,16 +13,23 @@ public class EnemySpawn : MonoBehaviour
     public int Enemysnow = 0;
     public int enemyMax = 100;
     private bool maxReached = false; // Bool that stores the Information if the maximum is reached
-    private List<GameObject> enemies = new List<GameObject>();
     public Vector3 spawnPos; //Spawning an enemy
-    
-    
+    private List<GameObject> EnemyPoolList = new List<GameObject>();
+    public List<int> used_numbers;
+
+    float prefabTimer;
+    int prefabNumber;
 
 
     public void Start()
     {
-
-        StartCoroutine(SpawnEnemy());
+        prefabTimer = time;
+        foreach (GameObject enemy in EnemyPoolList)
+        {
+            EnemiesPool.Instance.AddToPool(enemy, 1);
+        }
+            StartCoroutine(SpawnEnemy());
+        
     }
 
     IEnumerator SpawnEnemy()
@@ -31,27 +38,39 @@ public class EnemySpawn : MonoBehaviour
         {
             if (!maxReached) {
 
-                EnemiesRespawns = (GameObject[])Resources.LoadAll<GameObject >("Spiders/prefabs") as GameObject[];
-                
                 spawnPos = GameObject.Find("Player").transform.position; //Spawning an enemy
                 spawnPos += new Vector3( Random.insideUnitSphere.x, 0, Random.insideUnitSphere.z).normalized * spawnRadius;
-                
-                foreach (GameObject enemy in EnemiesRespawns)
+                prefabTimer = Time.deltaTime;
+                if (prefabTimer <= 0)
                 {
-                    Instantiate(enemy, spawnPos, Quaternion.identity);
+                    prefabNumber = Random.Range(0, EnemyPoolList.Count);
+                }
+                while (used_numbers.Contains(prefabNumber))
+                {
+                    prefabNumber = Random.Range(0, EnemyPoolList.Count);
+                }
+                used_numbers.Add(prefabNumber);
 
-                        yield return new WaitForSeconds(time);
+                Instantiate(EnemyPoolList[prefabNumber], spawnPos, Quaternion.identity);
+                EnemiesPool.Instance.GetFromPool(EnemyPoolList[prefabNumber],spawnPos,Quaternion.identity);
+                if (used_numbers.Count >= 10)
+                {
+                    used_numbers.RemoveRange(0, used_numbers.Count - 5);
+                }
+
+                yield return new WaitForSeconds(time);
                         Enemysnow++; // increase the enemy counter
-                    }
+               /* }*/
             }
         
                 yield return null;
-                maxReached = Enemysnow >= enemyMax;
+
+          
+            maxReached = Enemysnow >= enemyMax;
             }
 }
-        
-
-        public void LowerMaxEnemys()
+    
+    public void LowerMaxEnemys()
         {
             Enemysnow--;
 
