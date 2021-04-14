@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
     public Slider VolumeSlider;
     public Sprite OffSound;
     public Sprite OnSound;
+    public FixedJoystick rotationJoystic;
 
     public void SetVolume(float volume)
     {
@@ -107,5 +108,9 @@ public class PauseMenu : MonoBehaviour
             {  
             Paused(); 
         }
+    }
+    public void RotationChooser()
+    {
+        rotationJoystic.gameObject.SetActive(!rotationJoystic.gameObject.active);
     }
 }
