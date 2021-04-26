@@ -24,17 +24,17 @@ public abstract class EnemyBaseClass:IDamageble, IAttaker,IMoveble
     }
 
     public virtual void DealDamage(GameObject target)
-    {
-        Debug.Log(name + " нанёс урон " + target.name+" в размере " + damage);
+    {/*
+        Debug.Log(name + " нанёс урон " + target.name+" в размере " + damage);*/
     }
 
     public virtual void Move(GameObject point)
     {
-        Debug.Log(name + " переместился в позицию " +point);
+        /*Debug.Log(name + " переместился в позицию " +point);*/
     }
 
     public virtual void TakeDamage(float damage,string attakerName)
     {
-        Debug.Log(name + "получил урон от " + attakerName+" в размере "+damage);
+       /* Debug.Log(name + "получил урон от " + attakerName+" в размере "+damage);*/
     }
 }
