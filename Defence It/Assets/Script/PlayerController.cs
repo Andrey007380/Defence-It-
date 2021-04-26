@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rigidbody = GetComponent<Rigidbody>();
     }
    public void Rotation()
@@ -41,8 +42,13 @@ public class PlayerController : MonoBehaviour
         transformY = joystick.Vertical * moveSpeed;
         rigidbody.velocity = new Vector3(transformX * Time.deltaTime, 0, transformY * Time.deltaTime);
 
-       
-            Rotation();
+        LineRenderer lineRenderer = rigidbody.GetComponent<LineRenderer>();
+        lineRenderer.SetVertexCount(2);
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, transform.forward * 30 + transform.position);
+
+
+        Rotation();
        
     }
 }
