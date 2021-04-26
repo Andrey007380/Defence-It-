@@ -33,7 +33,7 @@ public class AutoLoadLevel : MonoBehaviour
         GameStatsMechanics gameStatsMechanics = player.GetComponent<GameStatsMechanics>();
         if (player.transform.position.x > 1800|| player.transform.position.x < -800|| player.transform.position.z < -800|| player.transform.position.z > 1800)
         {
-            gameStatsMechanics.DeathZone();
+            gameStatsMechanics.DeathZoneScript();
         }else if(player.transform.position.y < 0)
         {
             player.transform.position = (new Vector3(player.transform.position.x, 1, player.transform.position.z));

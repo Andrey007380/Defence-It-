@@ -5,7 +5,8 @@ public class GameStatsMechanics : MonoBehaviour
     public float health;
     public float maxHealth = 100f;
     public float armor;
-
+    public delegate void DeathZone();
+    public event DeathZone OnDeathZone;
 
 
     public HealthBar healthBar;
@@ -25,8 +26,9 @@ public class GameStatsMechanics : MonoBehaviour
       healthBar.SetHealth(health);
     }
 
-    public void DeathZone()
+    public void DeathZoneScript()
     {
+        OnDeathZone();
         health -= 0.01f;
         healthBar.SetHealth(health);
     }

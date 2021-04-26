@@ -2,18 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.UI;
 public class Shouting : MonoBehaviour
 {
     public Transform FirePoint; // Place from where bullets shoot
     public Transform PlayerPoint; // Point in which player look at
     public GameObject BulletPrefab; // bullet
 
+    float closerEnemy;
+    float Distance;
+    GameObject closerDistance;
+
 
     public float bulletForce = 15f;
+    public Button autoshoot;
+
+    public void Start()
+    {
+        
+        autoshoot = PlayerController.Instance.rotationJoystic.GetComponent<Button>();
+        autoshoot.onClick.AddListener(RotationAim);
+    }
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+       
+        if (Input.GetButtonDown("Fire1"))
         {
             Aim();
         }
@@ -31,8 +44,7 @@ public class Shouting : MonoBehaviour
             }*/
 
         }
-
-
+        
     }
     public void Aim()
     {
@@ -77,6 +89,32 @@ public class Shouting : MonoBehaviour
         Shoot();
         }
         
+    }
+
+    public void AutoAim()
+    {
+       GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemies");
+        Transform nearestenemy = null;
+        closerEnemy = Mathf.Infinity;
+        foreach (GameObject enemy in enemies)
+        {
+            Distance = Vector3.Distance(enemy.transform.position, PlayerController.Instance.rigidbody.position);
+            if (Distance < closerEnemy)
+            {
+                nearestenemy = enemy.transform;
+                closerEnemy = Distance;
+            }
+
+            PlayerPoint.transform.LookAt(nearestenemy);
+            FirePoint.transform.LookAt(nearestenemy);
+        }
+        
+    }
+
+   void RotationAim()
+    {
+        AutoAim();
+        Shoot();
     }
 
     public void Shoot()

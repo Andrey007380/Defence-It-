@@ -13,17 +13,22 @@ public class PlayerController : MonoBehaviour
     public float RotateY;
 
     public FixedJoystick joystick;
-    public FixedJoystick rotationJoystic;
+    public  FixedJoystick rotationJoystic;
     public Rigidbody rigidbody;
+    public static PlayerController Instance { get; private set; }
 
+    void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
-    void Rotation()
+   public void Rotation()
     {
-        if (rotationJoystic.gameObject.active)
+        if (rotationJoystic.gameObject.active && rotationJoystic.Direction != new Vector2(0,0))
         {
             angular = Mathf.Atan2(rotationJoystic.Horizontal, rotationJoystic.Vertical) * Mathf.Rad2Deg;
             rigidbody.transform.rotation = Quaternion.Euler(new Vector3(0, angular, 0));

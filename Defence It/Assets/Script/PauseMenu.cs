@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauuseMenuUI;
     public GameObject Settings;
     public AudioMixer audioMixer;
-    public Button VolumeButton;
+    public Image VolumeImage;
     public Slider VolumeSlider;
     public Sprite OffSound;
     public Sprite OnSound;
@@ -23,13 +23,11 @@ public class PauseMenu : MonoBehaviour
         audioMixer.SetFloat("MasterVolume", volume);
         if (VolumeSlider.value > 0)
         {
-            VolumeButton.image.sprite = OffSound;
-            VolumeSlider.value = 0;
+            VolumeImage.sprite = OnSound;
         }
         else
         {
-            VolumeButton.image.sprite = OnSound;
-            VolumeSlider.value = 5;
+            VolumeImage.sprite = OffSound;
         }
     }
 
@@ -43,27 +41,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Start()
     {
-        VolumeButton.image.sprite = OffSound;
-        VolumeButton.onClick.AddListener(ButtonImages);
-        Image ButtonImage = VolumeButton.GetComponent<Image>();
+        VolumeImage.sprite = OffSound;
+        Image ButtonImage = VolumeImage.GetComponent<Image>();
         PauuseMenuUI.SetActive(false);
         Settings.SetActive(false);
     }
 
-    public void ButtonImages()
-    {
-
-        if (VolumeButton.image.sprite == OnSound)
-            {
-                VolumeButton.image.sprite = OffSound;
-                VolumeSlider.value = 0;
-            }
-            else if (VolumeButton.image.sprite == OffSound)
-            {
-                VolumeButton.image.sprite = OnSound;
-                VolumeSlider.value = 5;
-            }
-    }
 
     public void Setting()
     {

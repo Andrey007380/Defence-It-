@@ -1,70 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemiesPool : MonoBehaviour
 {
     
-    private GameObject prefab;
+   
     //Int = key
     Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
+    public Queue<GameObject> availableObjcts = new Queue<GameObject>();
+    [System.Serializable]
+    public class Pool {
+        public int tag;
+        public GameObject prefab;
+        public int size;
+    }
 
-    private Queue<GameObject> availableObjcts = new Queue<GameObject>();
+
+    public List<Pool> pools;
 
     static EnemiesPool _instance;
-    public static EnemiesPool Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<EnemiesPool>();
-            }
-            return Instance;
-        }
-    }
+    public static EnemiesPool Instance { get; private set; }
+   
+
     public void Start()
     {
-        prefab = Resources.Load<GameObject>("Spiders/prefabs");
+        foreach (Pool pool in pools)
+        {
+           
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = Instantiate(pool.prefab = Resources.Load<GameObject>("Spiders/prefabs/spider2"));
+                obj.SetActive(false);
+                availableObjcts.Enqueue(obj);
+            }
+            poolDictionary.Add(pool.tag, availableObjcts);
+        }
     }
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
-   public void GetFromPool(GameObject prefab, Vector3 position, Quaternion rotation)
+    public GameObject GetFromPool(int tag, Vector3 position, Quaternion rotation)
     {
-        int poolKey = prefab.GetInstanceID();
-        //Make sure that the pool contains the key
-        if (poolDictionary.ContainsKey(poolKey))
+        if (!poolDictionary.ContainsKey(tag))
         {
-            //Get first object of the queue
-            GameObject objectToReuse = poolDictionary[poolKey].Dequeue();
-            //Add object back to the end of the queue so we can reuse it again later
-            poolDictionary[poolKey].Enqueue(objectToReuse);
-
-            objectToReuse.SetActive(true);
-            objectToReuse.transform.position = position;
-            objectToReuse.transform.rotation = rotation;
+            Debug.LogWarning("Pool with tag" + tag + "not exist");
+            return null;
         }
+        //Get first object of the queue
+        GameObject ObjectToSpawn = poolDictionary[tag].Dequeue();
 
-    
+        ObjectToSpawn.SetActive(true);
+        ObjectToSpawn.transform.position = position;
+        ObjectToSpawn.transform.rotation = rotation;  
+             
+        return ObjectToSpawn;
     }
-    public void AddToPool(GameObject prefab, int poolSize)
+    public void AddToPool(GameObject prefab)
     {
-        //Key is unique for each prefab
-        int poolKey = prefab.GetInstanceID();
 
-        //Make sure the poolkey is already in our dictionary because it will cause errors if we don't
-        if (!poolDictionary.ContainsKey(poolKey))
-        {
-            poolDictionary.Add(poolKey, new Queue<GameObject>());
-        }
+        prefab.SetActive(false);
+        //Add to the pool
+        availableObjcts.Enqueue(prefab);
 
-        //Instantiate prefabs to create te pool
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject newObject = Instantiate(prefab) as GameObject;
-            newObject.SetActive(false);
-            //Add to the pool
-            poolDictionary[poolKey].Enqueue(newObject);
-        }
     }
 }
