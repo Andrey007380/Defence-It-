@@ -29,7 +29,7 @@ public class EnemiesPool : MonoBehaviour
            
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab = Resources.Load<GameObject>("Spiders/prefabs/spider2"));
+                GameObject obj = Instantiate(pool.prefab/* = Resources.Load<GameObject>("Spiders/prefabs/Sphere")*/);
                 obj.SetActive(false);
                 availableObjcts.Enqueue(obj);
             }
@@ -52,9 +52,11 @@ public class EnemiesPool : MonoBehaviour
         GameObject ObjectToSpawn = poolDictionary[tag].Dequeue();
 
         ObjectToSpawn.SetActive(true);
+
         ObjectToSpawn.transform.position = position;
-        ObjectToSpawn.transform.rotation = rotation;  
-             
+        ObjectToSpawn.transform.rotation = rotation;
+
+      
         return ObjectToSpawn;
     }
     public void AddToPool(GameObject prefab)

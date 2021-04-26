@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-public class GameStatsMechanics : MonoBehaviour
+public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
 {
     public float health;
     public float maxHealth = 100f;
@@ -12,7 +14,7 @@ public class GameStatsMechanics : MonoBehaviour
     public HealthBar healthBar;
 
 
-    public void Start()
+    public void OnEnable()
     {
         healthBar.SetMaxHealth(maxHealth);
         health = maxHealth;
