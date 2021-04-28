@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90440599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84fce0d7bc15a084cb595cfc856a502e, type: 3}
   m_Name: 
@@ -2234,6 +2234,7 @@ GameObject:
   - component: {fileID: 1571240946}
   - component: {fileID: 1571240950}
   - component: {fileID: 1571240951}
+  - component: {fileID: 1571240952}
   m_Layer: 5
   m_Name: InGameFeaturesUI
   m_TagString: Untagged
@@ -2355,6 +2356,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce71a7245d96e5499e6984469469ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1571240952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571240945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc40748c2eba43e469cc4fcf83569e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: {fileID: 1994979412509773048, guid: ef984973878266a449352c74d76abe80, type: 3}
+  mouseColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 791
 --- !u!1 &1637943655
 GameObject:
   m_ObjectHideFlags: 0
