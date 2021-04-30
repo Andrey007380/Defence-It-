@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class SaveLoadSystem : MonoBehaviour
 {
-    private  string PATH = Application.dataPath;
-    private string MobilePATH = Application.persistentDataPath;
+     
+    [SerializeField] GameObject PlayerData;
+    [SerializeField] GameObject CountersData;
+    [SerializeField] GameObject BaseData;
+
+
+    private void Start()    {
+         string Path = Application.dataPath;
+        string MobilePATH = Application.persistentDataPath;
+    }
     public void SaveToJson()
     {
 
     }
+
 
 }
