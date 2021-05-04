@@ -25,7 +25,7 @@ public class BulletMechanics : MonoBehaviour
             if(co.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
             {
                 OnDeath();               
-                EnemiesPool.Instance.AddToPool(co.gameObject);
+                EnemiesPool.Instance.AddToPool(0,co.gameObject);
                 Instantiate(Drop, transform.position, Drop.transform.rotation);
                
             }

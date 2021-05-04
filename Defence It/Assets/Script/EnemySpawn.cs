@@ -7,13 +7,14 @@ using System.Linq;
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
+    private float spawnRadius = 40, time = 2f;
     public int Enemysnow = 0;
     public int enemyMax = 100;
     private bool maxReached = false; // Bool that stores the Information if the maximum is reached
     public Vector3 spawnPos; //Spawning an enemy
     EnemiesPool EnemiesPool;
 
-    private float spawnRadius = 20, time = 0.50f;
+    
     public void Start()
     {       
         StartCoroutine(SpawnEnemy());

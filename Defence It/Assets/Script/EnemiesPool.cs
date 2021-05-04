@@ -50,21 +50,24 @@ public class EnemiesPool : MonoBehaviour
         }
         //Get first object of the queue
         GameObject ObjectToSpawn = poolDictionary[tag].Dequeue();
-
         ObjectToSpawn.SetActive(true);
-
         ObjectToSpawn.transform.position = position;
         ObjectToSpawn.transform.rotation = rotation;
 
       
         return ObjectToSpawn;
     }
-    public void AddToPool(GameObject prefab)
+    public void AddToPool(int tag, GameObject prefab)
     {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag" + tag + "not exist");
+            return;
+        }
 
         prefab.SetActive(false);
         //Add to the pool
-        availableObjcts.Enqueue(prefab);
+       availableObjcts.Enqueue(prefab);
 
     }
 }

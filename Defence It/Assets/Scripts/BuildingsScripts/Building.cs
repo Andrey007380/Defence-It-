@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageble
+public class Building : MonoBehaviour
 {
-     void TakeDamage(int damage, string attakerName);
-    
+    Vector2Int Size = Vector2Int.one;
+
+  
 }
