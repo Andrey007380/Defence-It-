@@ -11,7 +11,7 @@ public class EventIconShower : MonoBehaviour
     public GameObject Pointer;
     void Awake()
     {
-        targetPosition = new Vector3(500, uiCamera.transform.position.y, 500);
+        targetPosition = new Vector3(500, 0, 500);
         pointRectTranform = Pointer.GetComponent<RectTransform>();
     }
 
