@@ -15,16 +15,18 @@ public class PlayerController : MonoBehaviour
     public FixedJoystick joystick;
     public  FixedJoystick rotationJoystic;
     public Rigidbody rigidbody;
+    LineRenderer lineRenderer;
     public static PlayerController Instance { get; private set; }
 
     void Awake()
     {
         Instance = this;
+       
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        lineRenderer = rigidbody.GetComponent<LineRenderer>();
         rigidbody = GetComponent<Rigidbody>();
     }
    public void Rotation()
@@ -42,12 +44,10 @@ public class PlayerController : MonoBehaviour
         transformY = joystick.Vertical * moveSpeed;
         rigidbody.velocity = new Vector3(transformX * Time.deltaTime, 0, transformY * Time.deltaTime);
 
-        LineRenderer lineRenderer = rigidbody.GetComponent<LineRenderer>();
+       
         lineRenderer.SetVertexCount(2);
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, transform.forward * 30 + transform.position);
-
-
         Rotation();
        
     }
