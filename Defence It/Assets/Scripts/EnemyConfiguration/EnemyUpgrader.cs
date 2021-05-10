@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUpgrader : MonoBehaviour
+public static class EnemyUpgrader
 {
-    // Start is called before the first frame update
-    void Start()
+    
+public static float Hpmulty { get; private set; } = 1.0f;
+ public static float DamageMulty { get; private set; } = 1.0f;
+     static void AddStats()
     {
-        
-    }
+        Hpmulty += 0.02f;
+        DamageMulty += 0.01f;
 
-    // Update is called once per frame
-    void Update()
+    }
+   public static void  Enable()
     {
-        
+        Timer.OnMonsterUpgrade+=AddStats;
+    }
+    public static void Disable()
+    {
+        Timer.OnMonsterUpgrade -= AddStats;
     }
 }

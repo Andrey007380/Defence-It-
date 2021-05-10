@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[Serializable]
 public class BulldingsGrid<TGridObject>
 {
     private int width;
@@ -90,4 +90,5 @@ public class BulldingsGrid<TGridObject>
     {
         return new Vector3(x,0, y) * cellSize + originPosition;
     }   
+    
 }

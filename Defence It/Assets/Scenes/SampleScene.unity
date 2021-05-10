@@ -1633,6 +1633,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1720,6 +1721,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62c5377fb1b6984298f49ff1db88474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcandplayersData:
+  - {fileID: 583910047}
+  - {fileID: 1672849421}
+  SetingsData: {fileID: 0}
+  CountersData: {fileID: 1571240945}
+  Enemymultiplyer: {fileID: 90440599}
 --- !u!1 &551949343
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,6 +5748,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 714acc3931e9e2d49b47461e801759fc, type: 3}
+--- !u!1 &1672849421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2100483148275997094, guid: 714acc3931e9e2d49b47461e801759fc, type: 3}
+  m_PrefabInstance: {fileID: 1672849420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1675178139
 GameObject:
   m_ObjectHideFlags: 0

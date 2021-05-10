@@ -16,13 +16,21 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
 
     public void OnEnable()
     {
-        healthBar.SetMaxHealth(maxHealth);
-        health = maxHealth;
+        setStats();
 
     }
 
-
-   public void TakeDamage(float damage)
+    public void setStats()
+    {
+        healthBar.SetMaxHealth(maxHealth);
+        health = maxHealth;
+    }
+    public  void setStats(float hp)
+    {
+        maxHealth =Mathf.FloorToInt( hp);
+        setStats();
+    }
+    public void TakeDamage(float damage)
     {
       health -= damage;
       healthBar.SetHealth(health);
