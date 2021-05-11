@@ -55,6 +55,6 @@ public class Timer : MonoBehaviour
     }
     public string GetCounters()
     { 
-        return current_time + death + Drop.bullets.ToString();
+        return current_time +","+ death + ","+Drop.bullets.ToString();
     }
 }

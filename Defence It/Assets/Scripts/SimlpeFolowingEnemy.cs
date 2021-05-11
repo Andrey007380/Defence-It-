@@ -12,12 +12,17 @@ public class SimlpeFolowingEnemy : MonoBehaviour/*, IRespawnEnemy*/
     EnemyPriority enemyPriority;
     GameStatsMechanics gameStats;
 
-  
+    private void Start()
+    {
+        
+       
+    }
     private void OnEnable()
     {
         gameStats = GetComponent<GameStatsMechanics>();
         enemyPriority = new EnemyPriority();
         EnemyBase = new FollowingEnemy(Random.Range(0, 99999).ToString(), 1.0f*EnemyUpgrader.Hpmulty, 0, Mathf.FloorToInt( 10*EnemyUpgrader.DamageMulty), 1, 1, GetComponent<NavMeshAgent>());
+        gameStats.setStats(EnemyBase.heath);
         StartCoroutine(DoCheck());
     }
     IEnumerator DoCheck()

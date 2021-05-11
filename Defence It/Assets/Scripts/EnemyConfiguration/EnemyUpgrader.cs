@@ -21,4 +21,8 @@ public static float Hpmulty { get; private set; } = 1.0f;
     {
         Timer.OnMonsterUpgrade -= AddStats;
     }
+    public static void SetValue(float hp,float dm) {
+        Hpmulty = hp;
+        DamageMulty = dm;
+    }
 }
