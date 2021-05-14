@@ -90,5 +90,8 @@ public class BulldingsGrid<TGridObject>
     {
         return new Vector3(x,0, y) * cellSize + originPosition;
     }   
-    
+     public float GetCellSize()
+    {
+        return cellSize;
+    }
 }

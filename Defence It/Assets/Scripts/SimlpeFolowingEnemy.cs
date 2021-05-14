@@ -9,6 +9,7 @@ public class SimlpeFolowingEnemy : MonoBehaviour/*, IRespawnEnemy*/
     public GameObject Target;
     private RaycastHit raycast;
     public LayerMask AttackMask;
+    public LayerMask TargetMask;
     EnemyPriority enemyPriority;
     GameStatsMechanics gameStats;
 
@@ -29,7 +30,11 @@ public class SimlpeFolowingEnemy : MonoBehaviour/*, IRespawnEnemy*/
     {
         for (; ; )
         {
-           Target= enemyPriority.GetNewTarget(Physics.OverlapSphere(transform.position, EnemyBase.attackRange*2, AttackMask));
+            Collider[] Targets = Physics.OverlapSphere(transform.position, EnemyBase.attackRange * 2, TargetMask);
+            if (Targets.Length>=2)
+            {
+                Target = enemyPriority.GetNewTarget(Targets);
+            }
             if (Target != null)
 
 

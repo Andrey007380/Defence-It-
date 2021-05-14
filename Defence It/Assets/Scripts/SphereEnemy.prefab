@@ -412,6 +412,9 @@ MonoBehaviour:
   AttackMask:
     serializedVersion: 2
     m_Bits: 1
+  TargetMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &3644673373707857800
 MonoBehaviour:
   m_ObjectHideFlags: 0
