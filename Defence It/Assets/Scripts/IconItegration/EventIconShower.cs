@@ -8,24 +8,31 @@ public class EventIconShower : MonoBehaviour
     [SerializeField] private Sprite arrowSprite;
     [SerializeField] private Sprite crossSprite;
 
-    QuestPointer questPointer1;
-    void Awake()
+    private List<QuestPointer> questPointers;
+    private void Awake()
     {
-        
+        questPointers = new List<QuestPointer>();
     }
-
-   
     void Update()
     {
-        questPointer1.Update();
+        foreach (QuestPointer item in questPointers)
+        {
+            item.Update();
+        }
+        
     }
     public QuestPointer CreatePointer(Vector3 tragetPosition,GameObject PointerPref)
     {
         GameObject PointerGameObject = Instantiate(PointerPref);
         PointerGameObject.transform.SetParent(transform, false);
         QuestPointer questPointer = new QuestPointer(tragetPosition,uiCamera, PointerPref, null, null);
-        this.questPointer1 = questPointer;
+       questPointers.Add(questPointer) ;
         return questPointer;
+    }
+    public void DestroyPointer(QuestPointer pointer)
+    {
+        questPointers.Remove(pointer);
+        pointer.DestroySelf();
     }
     public class QuestPointer
     {
@@ -80,6 +87,11 @@ public class EventIconShower : MonoBehaviour
 
                 pointRectTranform.localPosition = new Vector3(pointRectTranform.localPosition.x, pointRectTranform.localPosition.y, 1);
             }
+            
+        }
+        public void DestroySelf()
+        {
+            Destroy(PointerGameObject);
         }
     }
 }
