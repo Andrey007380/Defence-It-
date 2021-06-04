@@ -45,9 +45,9 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = new Vector3(transformX * Time.deltaTime, 0, transformY * Time.deltaTime);
 
        
-        lineRenderer.SetVertexCount(2);
+/*        lineRenderer.SetVertexCount(2);
         lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.forward * 30 + transform.position);
+        lineRenderer.SetPosition(1, transform.forward * 30 + transform.position);*/
         Rotation();
        
     }

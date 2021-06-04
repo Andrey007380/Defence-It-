@@ -72,12 +72,12 @@ public class PauseMenu : MonoBehaviour
    public void Resume()
     {
         Time.timeScale = 1;
-        PauuseMenuUI.SetActive(false);
+        PauuseMenuUI.SetActive(!PauuseMenuUI.active);
         Paude = false;
     }
     void Paused()
     {
-        PauuseMenuUI.SetActive(true);
+        PauuseMenuUI.SetActive(!PauuseMenuUI.active);
         Paude = true;
         Time.timeScale = 0;
     }
