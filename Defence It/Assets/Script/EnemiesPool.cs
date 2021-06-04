@@ -18,7 +18,6 @@ public class EnemiesPool : MonoBehaviour
 
     public List<Pool> pools;
 
-    static EnemiesPool _instance;
     public static EnemiesPool Instance { get; private set; }
    
 

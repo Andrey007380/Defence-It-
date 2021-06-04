@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool Paude = false;
     public static bool SettingsMenu = false;
     public GameObject PauuseMenuUI;
+    public GameObject DeatScreenAndAds;
     public GameObject Settings;
     public AudioMixer audioMixer;
     public Image VolumeImage;
@@ -31,16 +32,20 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
+    public static PauseMenu Instance { get;  set;}
 
     public void SetQuality(int qualityindex)
     {
         QualitySettings.SetQualityLevel(qualityindex);
     }
 
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void Start()
     {
+       
         VolumeImage.sprite = OffSound;
         Image ButtonImage = VolumeImage.GetComponent<Image>();
         PauuseMenuUI.SetActive(false);
@@ -60,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         {
             PauuseMenuUI.SetActive(!PauuseMenuUI.active);
             Settings.SetActive(!Settings.active);
-            SettingsMenu = false;
+            SettingsMenu = true;
         }
     }
 

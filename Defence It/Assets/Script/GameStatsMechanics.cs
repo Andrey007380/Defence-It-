@@ -10,25 +10,32 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
     public delegate void DeathZone();
     public event DeathZone OnDeathZone;
 
-    public delegate void Death();
-    public event Death OnDeath;
 
-
+    PauseMenu PauseMenu;
+    PlayerController playerController;
     public HealthBar healthBar;
+
+    private void Start()
+    {
+        PauseMenu = PauseMenu.Instance;
+        playerController = PlayerController.Instance;
+    }
 
 
     private void OnEnable()
     {
         healthBar.SetMaxHealth(maxHealth);
         health = maxHealth;
-
     }
 
-
-   public void TakeDamage(float damage)
+    private void Update()
     {
-      health -= damage;
-      healthBar.SetHealth(health);
+        DeathScript();
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        healthBar.SetHealth(health);
     }
 
     public void DeathZoneScript()
@@ -39,11 +46,22 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
     }
 
     public void DeathScript()
-    {  
-        if(health <= 0f)
+    {
+        if (playerController.rigidbody.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
         {
-            Debug.Log("Dead");
-            OnDeath();
+            PauseMenu.DeatScreenAndAds.SetActive(true);
+            Time.timeScale = 0;
+            GameObject player = playerController.rigidbody.gameObject;
+            player.transform.position = new Vector3(500f, 0.82f, 500f);
+            player.GetComponent<GameStatsMechanics>().health = maxHealth;
+        }
+        else
+        {
+            PauseMenu.DeatScreenAndAds.SetActive(false);
+            Time.timeScale = 1;
+           
+        }  
         }
     }
-}
+
+
