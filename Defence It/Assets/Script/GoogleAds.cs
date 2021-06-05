@@ -40,16 +40,20 @@ public class GoogleAds : MonoBehaviour
 
     private void RewardedAd_OnAdClosed(object sender, EventArgs e)
     {
-        //add closed by user
+        GameStatsMechanics.Instance.Restart();
+        Drop.bullets -= (int)(Drop.bullets * 0.25);
     }
 
     private void RewardedAd_OnUserEarnedReward(object sender, Reward e)
     {
-        // reward user
+        GameStatsMechanics.Instance.Restart();
+        Drop.bullets -= (int)(Drop.bullets * 0.25);
     }
 
     private void RewardedAd_OnAdLoaded(object sender, EventArgs e)
     {
         rewardedAd.Show();
+        GameStatsMechanics.Instance.Restart();
     }
+
 }

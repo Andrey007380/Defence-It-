@@ -9,6 +9,11 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
     public float armor;
     public delegate void DeathZone();
     public event DeathZone OnDeathZone;
+    
+    public delegate void Death();
+    public static event Death OnDeathScript;
+
+    public static GameStatsMechanics Instance { get; set;}
 
 
     PauseMenu PauseMenu;
@@ -17,6 +22,7 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
 
     private void Start()
     {
+        Instance = this;
         PauseMenu = PauseMenu.Instance;
         playerController = PlayerController.Instance;
     }
@@ -47,21 +53,22 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
 
     public void DeathScript()
     {
-        if (playerController.rigidbody.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
+        while(playerController.rigidbody.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
         {
             PauseMenu.DeatScreenAndAds.SetActive(true);
-            Time.timeScale = 0;
             GameObject player = playerController.rigidbody.gameObject;
             player.transform.position = new Vector3(500f, 0.82f, 500f);
             player.GetComponent<GameStatsMechanics>().health = maxHealth;
+            Time.timeScale = 0;
+
         }
-        else
-        {
-            PauseMenu.DeatScreenAndAds.SetActive(false);
-            Time.timeScale = 1;
-           
-        }  
         }
+    public void Restart()
+    {
+        PauseMenu.DeatScreenAndAds.SetActive(false);
+        Time.timeScale = 1;
+        
+    }
     }
 
 

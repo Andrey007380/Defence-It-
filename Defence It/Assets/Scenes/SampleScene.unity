@@ -3342,9 +3342,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2083552103}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Setting
+      - m_Target: {fileID: 2083552104}
+        m_TargetAssemblyTypeName: GoogleAds, Assembly-CSharp
+        m_MethodName: CreateAndLoadRewardedAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
