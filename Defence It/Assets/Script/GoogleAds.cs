@@ -31,6 +31,7 @@ public class GoogleAds : MonoBehaviour
         this.rewardedAd.OnAdLoaded += RewardedAd_OnAdLoaded;
         this.rewardedAd.OnUserEarnedReward += RewardedAd_OnUserEarnedReward;
         this.rewardedAd.OnAdClosed += RewardedAd_OnAdClosed;
+        
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
@@ -40,8 +41,7 @@ public class GoogleAds : MonoBehaviour
 
     private void RewardedAd_OnAdClosed(object sender, EventArgs e)
     {
-        GameStatsMechanics.Instance.Restart();
-        Drop.bullets -= (int)(Drop.bullets * 0.25);
+        GameStatsMechanics.Instance.Restart();   
     }
 
     private void RewardedAd_OnUserEarnedReward(object sender, Reward e)
@@ -52,8 +52,8 @@ public class GoogleAds : MonoBehaviour
 
     private void RewardedAd_OnAdLoaded(object sender, EventArgs e)
     {
-        rewardedAd.Show();
         GameStatsMechanics.Instance.Restart();
+        rewardedAd.Show();
     }
 
 }
