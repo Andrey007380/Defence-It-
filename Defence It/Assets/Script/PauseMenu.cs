@@ -73,7 +73,15 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public float GetVolume()
+    {
+        float value;
+       audioMixer.GetFloat("MasterVolume",out value);
+        return value;
+    }
+    public int GetQualityIndex() {
+        return QualitySettings.GetQualityLevel();
+    }
    public void Resume()
     {
         Time.timeScale = 1;
@@ -86,6 +94,7 @@ public class PauseMenu : MonoBehaviour
         Paude = true;
         Time.timeScale = 0;
     }
+    
     public void MenuCaller()
     {
             if (Paude)
@@ -100,5 +109,6 @@ public class PauseMenu : MonoBehaviour
     public void RotationChooser()
     {
         rotationJoystic.gameObject.SetActive(!rotationJoystic.gameObject.active);
+       
     }
 }

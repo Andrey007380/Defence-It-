@@ -500,6 +500,7 @@ GameObject:
   - component: {fileID: 90440600}
   - component: {fileID: 90440602}
   - component: {fileID: 90440603}
+  - component: {fileID: 90440604}
   m_Layer: 0
   m_Name: SpawnEnemy
   m_TagString: Untagged
@@ -551,9 +552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCamera: {fileID: 1416999542}
-  targetPosition: {x: 0, y: 0, z: 0}
-  BorderSize: 10
-  Pointer: {fileID: 579141860}
+  arrowSprite: {fileID: 21300000, guid: 75ececfb6525f0e4cb5da6193eb94627, type: 3}
+  crossSprite: {fileID: 21300000, guid: 75ececfb6525f0e4cb5da6193eb94627, type: 3}
 --- !u!114 &90440603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +570,21 @@ MonoBehaviour:
   - tag: 0
     prefab: {fileID: 1359798910862127354, guid: 725fe2af722f2884a9050c489c618ea9, type: 3}
     size: 50
+--- !u!114 &90440604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90440599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7a0904217139e4a8ab1832eca689a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PosintersList:
+  - {fileID: 579141860}
+  eventIcon: {fileID: 90440602}
 --- !u!1 &92430609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1729,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1801,6 +1817,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62c5377fb1b6984298f49ff1db88474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcandplayersData:
+  - {fileID: 583910047}
+  - {fileID: 1672849421}
+  SetingsData: {fileID: 2083552098}
+  CountersData: {fileID: 1571240945}
+  Enemymultiplyer: {fileID: 90440599}
 --- !u!1 &551949343
 GameObject:
   m_ObjectHideFlags: 0
@@ -5733,6 +5767,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 714acc3931e9e2d49b47461e801759fc, type: 3}
+--- !u!1 &1672849421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2100483148275997094, guid: 714acc3931e9e2d49b47461e801759fc, type: 3}
+  m_PrefabInstance: {fileID: 1672849420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1675178139
 GameObject:
   m_ObjectHideFlags: 0

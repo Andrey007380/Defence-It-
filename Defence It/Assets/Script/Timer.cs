@@ -9,9 +9,11 @@ public class Timer : MonoBehaviour
     public Text timerup;
     public Text killedEnemies;
     public TextMeshProUGUI dropcounter;
-    private int death = 0;
+    public delegate void MonsterUpgrade();
+    public static event MonsterUpgrade OnMonsterUpgrade;
+    public int death {  set; get; } = 0;
 
-    float current_time = 0;
+    public float current_time { set; get; } = 0;
     public int avgFrameRate;
     public void Update()
     {
@@ -37,9 +39,22 @@ public class Timer : MonoBehaviour
     private void OnEnable()
     {
         BulletMechanics.OnDeath += KillCouter;
+        EnemyUpgrader.Enable();
     }
     private void OnDisable()
     {
         BulletMechanics.OnDeath -= KillCouter;
+        EnemyUpgrader.Disable();
+    }
+    public void SetCounters(int time,int killed,int bullet)
+    {
+        current_time = time;
+        death = killed;
+        Drop.bullets = bullet;
+
+    }
+    public string GetCounters()
+    { 
+        return current_time +","+ death + ","+Drop.bullets.ToString();
     }
 }

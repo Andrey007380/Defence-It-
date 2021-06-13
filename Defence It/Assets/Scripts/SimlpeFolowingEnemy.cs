@@ -2,26 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+[RequireComponent(typeof(GameStatsMechanics))]
 public class SimlpeFolowingEnemy : MonoBehaviour/*, IRespawnEnemy*/
 {
     public FollowingEnemy EnemyBase;
     public GameObject Target;
     private RaycastHit raycast;
     public LayerMask AttackMask;
+    public LayerMask TargetMask;
+    EnemyPriority enemyPriority;
+    GameStatsMechanics gameStats;
 
-
-
+    private void Start()
+    {
+        
+       
+    }
     private void OnEnable()
     {
-        EnemyBase = new FollowingEnemy(Random.Range(0, 99999).ToString(), 1.0f, 0, 10, 1, 1, GetComponent<NavMeshAgent>());
-        Target =  PlayerController.Instance.rigidbody.gameObject;
+        gameStats = GetComponent<GameStatsMechanics>();
+        enemyPriority = new EnemyPriority();
+        EnemyBase = new FollowingEnemy(Random.Range(0, 99999).ToString(), 1.0f*EnemyUpgrader.Hpmulty, 0, Mathf.FloorToInt( 10*EnemyUpgrader.DamageMulty), 1, 1, GetComponent<NavMeshAgent>());
+        gameStats.setStats(EnemyBase.heath);
         StartCoroutine(DoCheck());
     }
     IEnumerator DoCheck()
     {
         for (; ; )
         {
+            Collider[] Targets = Physics.OverlapSphere(transform.position, EnemyBase.attackRange * 2, TargetMask);
+            if (Targets.Length>=2)
+            {
+                Target = enemyPriority.GetNewTarget(Targets);
+            }
             if (Target != null)
 
 

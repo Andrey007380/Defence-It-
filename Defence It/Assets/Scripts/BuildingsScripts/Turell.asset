@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed0b783d54958f42831c614d3c4b8e3, type: 3}
+  m_Name: Turell
+  m_EditorClassIdentifier: 
+  NameString: turell
+  prefab: {fileID: 4678492721539288386, guid: 8feb410c8d0b35a43b42df12e1494590, type: 3}
+  visual: {fileID: 5467292252087052587, guid: ef984973878266a449352c74d76abe80, type: 3}
+  width: 1
+  height: 1
