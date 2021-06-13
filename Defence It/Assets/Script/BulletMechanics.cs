@@ -5,8 +5,10 @@ public class BulletMechanics : MonoBehaviour
 {
     public GameObject Projectile;
     private float damage = 20f;
+
     public delegate void Death();
     public static event Death OnDeath;
+
     public GameObject Drop;
     public static int death = 0;
 

@@ -19,10 +19,11 @@ public class HealthBar : MonoBehaviour
     }
     public void Update()
     {
-        if (Camera.main)
+        // health above look to camera
+/*        if (Camera.main)
         {
             HealthAbowCharacter.transform.rotation = Camera.main.transform.rotation;
-        }
+        }*/
         
     }
 }

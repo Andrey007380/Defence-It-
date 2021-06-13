@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool Paude = false;
     public static bool SettingsMenu = false;
     public GameObject PauuseMenuUI;
+    public GameObject DeatScreenAndAds;
     public GameObject Settings;
     public AudioMixer audioMixer;
     public Image VolumeImage;
@@ -31,16 +32,20 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
+    public static PauseMenu Instance { get;  set;}
 
     public void SetQuality(int qualityindex)
     {
         QualitySettings.SetQualityLevel(qualityindex);
     }
 
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void Start()
     {
+       
         VolumeImage.sprite = OffSound;
         Image ButtonImage = VolumeImage.GetComponent<Image>();
         PauuseMenuUI.SetActive(false);
@@ -60,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         {
             PauuseMenuUI.SetActive(!PauuseMenuUI.active);
             Settings.SetActive(!Settings.active);
-            SettingsMenu = false;
+            SettingsMenu = true;
         }
     }
 
@@ -68,19 +73,28 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public float GetVolume()
+    {
+        float value;
+       audioMixer.GetFloat("MasterVolume",out value);
+        return value;
+    }
+    public int GetQualityIndex() {
+        return QualitySettings.GetQualityLevel();
+    }
    public void Resume()
     {
         Time.timeScale = 1;
-        PauuseMenuUI.SetActive(false);
+        PauuseMenuUI.SetActive(!PauuseMenuUI.active);
         Paude = false;
     }
     void Paused()
     {
-        PauuseMenuUI.SetActive(true);
+        PauuseMenuUI.SetActive(!PauuseMenuUI.active);
         Paude = true;
         Time.timeScale = 0;
     }
+    
     public void MenuCaller()
     {
             if (Paude)
@@ -95,5 +109,6 @@ public class PauseMenu : MonoBehaviour
     public void RotationChooser()
     {
         rotationJoystic.gameObject.SetActive(!rotationJoystic.gameObject.active);
+       
     }
 }
