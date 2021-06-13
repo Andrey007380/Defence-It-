@@ -55,5 +55,5 @@ public class GoogleAds : MonoBehaviour
         GameStatsMechanics.Instance.Restart();
         rewardedAd.Show();
     }
-
+    
 }
