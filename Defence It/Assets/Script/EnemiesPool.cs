@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EnemiesPool : MonoBehaviour
 {
-    
-   
     //Int = key
     Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
     public Queue<GameObject> availableObjcts = new Queue<GameObject>();

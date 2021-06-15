@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9f2415a14ebb341b5f695a7a55944c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 293265172897699178, guid: a818fb9300498ed4fbc4fae85f2efef4, type: 3}
   AttackMask:
     serializedVersion: 2
     m_Bits: 1

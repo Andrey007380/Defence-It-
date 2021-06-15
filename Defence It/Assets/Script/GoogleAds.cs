@@ -2,18 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Common;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using GoogleMobileAds.Api;
 using System;
 
 public class GoogleAds : MonoBehaviour
 {
     private RewardedAd rewardedAd;
-
+    public static PlayGamesPlatform platform;
 
     // Start is called before the first frame update
     void Start()
     {
         MobileAds.Initialize(InitializationStatus => { });
+
+        if (platform == null)
+        {
+            PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().Build();
+            PlayGamesPlatform.InitializeInstance(configuration);
+            PlayGamesPlatform.DebugLogEnabled = true;
+
+            platform = PlayGamesPlatform.Activate();
+        }
+
+        Social.Active.localUser.Authenticate(success => 
+            {
+            if (success)
+            {
+                Debug.Log("Logged Successd");
+            }
+            else
+            {
+                Debug.Log("FAIL TO LOGIN");
+            }
+        });
         
     }
 
