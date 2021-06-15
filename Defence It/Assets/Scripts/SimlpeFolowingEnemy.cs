@@ -31,7 +31,7 @@ public class SimlpeFolowingEnemy : MonoBehaviour/*, IRespawnEnemy*/
         for (; ; )
         {
             Collider[] Targets = Physics.OverlapSphere(transform.position, EnemyBase.attackRange * 2, TargetMask);
-            if (Targets.Length>=2)
+            if (Targets.Length >= 1 )
             {
                 Target = enemyPriority.GetNewTarget(Targets);
             }

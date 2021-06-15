@@ -23,6 +23,7 @@ public class Timer : MonoBehaviour
         string Timerstring = string.Format("{0:00}:{1:00}", minute, seconds);
         timerup.text = "Live time: " + Timerstring;
         KilledEnemies();
+        OnMonsterUpgrade();
     }
     public void KilledEnemies()
     {

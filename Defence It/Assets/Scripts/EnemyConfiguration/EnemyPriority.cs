@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPriority
 {
-    public GameObject CurrentTarget { private set; get; } = new GameObject("Nobody");
+    public GameObject CurrentTarget { private set; get; }
     private Dictionary<string, int> ValueOfTag = new Dictionary<string, int>();
   public EnemyPriority()
     {
@@ -28,16 +28,22 @@ public class EnemyPriority
     {
         foreach( Collider col  in colliders)
         {if(ValueOfTag.ContainsKey(col.name))
+                if(CurrentTarget != null) 
+                { 
+                
            if(ValueOfTag[col.name] > ValueOfTag[CurrentTarget.name])
+                        
             {
                 CurrentTarget = col.gameObject;
             }
         }
-        if (CurrentTarget.name != "Nobody")
-        {
-            return null;
-        }else
+         else
+            {
+                CurrentTarget = col.gameObject;     
+            }
+        }
         return CurrentTarget;
     }
-   
+
+
 }
