@@ -24,7 +24,7 @@
 
 public static class GPGSIds
 {
-        public const string app_id = "179355052268"; // <GPGSID>
+        public const string achievement_your_time_to_shine = "CgkI7NGTk5wFEAIQAQ"; // <GPGSID>
 
 }
 

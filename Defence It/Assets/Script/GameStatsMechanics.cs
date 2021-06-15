@@ -2,37 +2,36 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
+public class GameStatsMechanics : MonoBehaviour
 {
-    public float health;
+    [Range(0f, float.MaxValue)] public float health;
     public float maxHealth = 100f;
     public float armor;
+
     public delegate void DeathZone();
     public event DeathZone OnDeathZone;
 
+    public delegate void Death();
+    public static event Death OnDeathScript;
 
     public HealthBar healthBar;
-    PauseMenu PauseMenu;
-    PlayerController playerController;
     public static GameStatsMechanics Instance { get; set; }
-    public void Start()
-    {
-        Instance = this;
-        PauseMenu = PauseMenu.Instance;
-        playerController = PlayerController.Instance;
-    }
 
     public void OnEnable()
     {
+        Instance = this;
         setStats();
     }
-
+    public void Update()
+    {
+        DeathScript();
+    }
     public void setStats()
     {
         healthBar.SetMaxHealth(maxHealth);
         health = maxHealth;
     }
-    public  void setStats(float hp)
+    public void setStats(float hp)
     {
         maxHealth =Mathf.FloorToInt( hp);
         setStats();
@@ -51,10 +50,10 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
     }
     public void DeathScript()
     {
-        while (playerController.rigidbody.gameObject.GetComponent<GameStatsMechanics>().health <= 0)
+        GameObject player = PlayerController.Instance.rigidbody.gameObject;
+        while (player.GetComponent<GameStatsMechanics>().health < 0)
         {
-            PauseMenu.DeatScreenAndAds.SetActive(true);
-            GameObject player = playerController.rigidbody.gameObject;
+            PauseMenu.Instance.DeatScreenAndAds.SetActive(true); 
             player.transform.position = new Vector3(500f, 0.82f, 500f);
             player.GetComponent<GameStatsMechanics>().health = maxHealth;
             Time.timeScale = 0;
@@ -63,7 +62,7 @@ public class GameStatsMechanics : MonoBehaviour/*, IRespawnEnemy*/
     }
     public void Restart()
     {
-        PauseMenu.DeatScreenAndAds.SetActive(false);
+        PauseMenu.Instance.DeatScreenAndAds.SetActive(false);
         Time.timeScale = 1;
 
     }
