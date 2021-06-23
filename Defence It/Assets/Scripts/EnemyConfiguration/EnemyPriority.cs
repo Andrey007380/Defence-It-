@@ -11,7 +11,6 @@ public class EnemyPriority
         ValueOfTag.Add("Player",100);
         ValueOfTag.Add("CharacterMainBase", 40);
         ValueOfTag.Add("BaseTurrel",50);
-        ValueOfTag.Add("Nobody", 0);
     }
     public EnemyPriority(Dictionary<string, int>x)
     {

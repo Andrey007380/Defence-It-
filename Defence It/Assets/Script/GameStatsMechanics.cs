@@ -11,8 +11,6 @@ public class GameStatsMechanics : MonoBehaviour
     public delegate void DeathZone();
     public event DeathZone OnDeathZone;
 
-    public delegate void Death();
-    public static event Death OnDeathScript;
 
     public HealthBar healthBar;
     public static GameStatsMechanics Instance { get; set; }
@@ -20,6 +18,7 @@ public class GameStatsMechanics : MonoBehaviour
     public void OnEnable()
     {
         Instance = this;
+       
         setStats();
     }
     public void Update()

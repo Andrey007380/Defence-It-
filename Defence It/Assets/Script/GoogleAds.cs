@@ -5,6 +5,7 @@ using GoogleMobileAds.Common;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using GoogleMobileAds.Api;
+using UnityEngine.SocialPlatforms;
 using System;
 
 public class GoogleAds : MonoBehaviour
@@ -16,30 +17,44 @@ public class GoogleAds : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(InitializationStatus => { });
+        OnServerInitialized();
+    }
+    void OnServerInitialized()
+    {
+        PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().Build();
+        PlayGamesPlatform.InitializeInstance(configuration);
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
 
-        if (platform == null)
+
+           Social.localUser.Authenticate((bool success) =>
+            {
+                switch (success)
+                {
+                    case true:
+                        Debug.Log("Logged Successd");
+                        break;
+                    default:
+                        Debug.Log("Logged Failed");
+                        break;
+                }
+            });      
+    }
+    public void LeaderBord(long newscore)
+    {
+        Social.ReportScore(newscore, GPGSIds.leaderboard_kill_rating, (bool success) =>
         {
-            PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().Build();
-            PlayGamesPlatform.InitializeInstance(configuration);
-            PlayGamesPlatform.DebugLogEnabled = true;
-
-            platform = PlayGamesPlatform.Activate();
-        }
-
-        Social.Active.localUser.Authenticate(success => 
+            switch (success)
             {
-            if (success)
-            {
-                Debug.Log("Logged Successd");
-            }
-            else
-            {
-                Debug.Log("FAIL TO LOGIN");
+                case true:
+                    Debug.Log("Posted new score");
+                    break;
+                default:
+                    Debug.LogError("Failed");
+                    break;
             }
         });
-        
     }
-
 
     public void CreateAndLoadRewardedAd()
     {

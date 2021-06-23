@@ -24,6 +24,7 @@
 
 public static class GPGSIds
 {
+        public const string leaderboard_kill_rating = "CgkI7NGTk5wFEAIQBA"; // <GPGSID>
         public const string achievement_your_time_to_shine = "CgkI7NGTk5wFEAIQAQ"; // <GPGSID>
 
 }

@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI dropcounter;
     public delegate void MonsterUpgrade();
     public static event MonsterUpgrade OnMonsterUpgrade;
-    public int death {  set; get; } = 0;
+    public int Death {  set; get; } = 0;
 
     public float current_time { set; get; } = 0;
     public int avgFrameRate;
@@ -30,12 +30,12 @@ public class Timer : MonoBehaviour
         float current = 0;
         current = (int)(1f / Time.unscaledDeltaTime);
         avgFrameRate = (int)current;
-        killedEnemies.text = "Kills: " + death.ToString();
+        killedEnemies.text = "Kills: " + Death.ToString();
         dropcounter.text = Drop.bullets.ToString();
     }
     public void KillCouter()
     {
-        death++;
+        Death++;
     }
     private void OnEnable()
     {
@@ -50,12 +50,12 @@ public class Timer : MonoBehaviour
     public void SetCounters(int time,int killed,int bullet)
     {
         current_time = time;
-        death = killed;
+        Death = killed;
         Drop.bullets = bullet;
 
     }
     public string GetCounters()
     { 
-        return current_time +","+ death + ","+Drop.bullets.ToString();
+        return current_time +","+ Death + ","+Drop.bullets.ToString();
     }
 }
