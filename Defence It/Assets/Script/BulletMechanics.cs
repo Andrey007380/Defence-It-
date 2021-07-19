@@ -4,7 +4,6 @@
 public class BulletMechanics : MonoBehaviour
 {
     public GameObject Projectile;
-    private float damage = 20f;
 
     public delegate void Death();
     public static event Death OnDeath;
@@ -12,8 +11,9 @@ public class BulletMechanics : MonoBehaviour
     public GameObject Drop;
     public static int death = 0;
 
-    
-    void OnTriggerEnter(Collider co)
+    private float damage = 20f;
+
+    private void OnTriggerEnter(Collider co)
     {
         Destroy(Projectile);
         Destroy(Projectile, 3);
@@ -33,4 +33,5 @@ public class BulletMechanics : MonoBehaviour
             }
         }   
     }
+
 }

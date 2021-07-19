@@ -14,19 +14,23 @@ public class GoogleAds : MonoBehaviour
     public static PlayGamesPlatform platform;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         MobileAds.Initialize(InitializationStatus => { });
         OnServerInitialized();
     }
-    void OnServerInitialized()
+    private void OnServerInitialized()
     {
-        PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().Build();
+        PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder()
+    .EnableSavedGames()
+    .RequestIdToken()
+    .RequestServerAuthCode(false)
+    .Build();
         PlayGamesPlatform.InitializeInstance(configuration);
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
 
-
+           
            Social.localUser.Authenticate((bool success) =>
             {
                 switch (success)

@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class AutoLoadLevel : MonoBehaviour
 {
-    public GameObject other;
-    public GameObject player;
+    [SerializeField] private GameObject other;
+    [SerializeField] private GameObject player;
 
 
     public void Start()
@@ -41,7 +39,7 @@ public class AutoLoadLevel : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         DeathZone();
         AutoLoad();

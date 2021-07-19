@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class Shouting : MonoBehaviour
 {
-    public Transform FirePoint; // Place from where bullets shoot
-    public Transform PlayerPoint; // Point in which player look at
-    public GameObject BulletPrefab; // bullet
+    [SerializeField] private Transform firePoint; // Place from where bullets shoot
+    [SerializeField] private Transform playerPoint; // Point in which player look at
+    [SerializeField] private GameObject bulletPrefab; // bullet
 
-    float closerEnemy;
-    float Distance;
+    private float closerEnemy;
+    private float Distance;
     GameObject closerDistance;
 
 
@@ -61,16 +59,16 @@ public class Shouting : MonoBehaviour
             Ray touchPos1 = Camera.main.ScreenPointToRay(Input.touches[1].position); // Second touch position to shoot
             if (Physics.Raycast(touchPos1, out _hit1))
             {
-                PlayerPoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
-                FirePoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
+                playerPoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
+                firePoint.transform.LookAt(new Vector3(_hit1.point.x, transform.position.y, _hit1.point.z));
 
             }
 
             /*  Ray touchPos = Camera.main.ScreenPointToRay(Input.touches[0].position); // First touch position to shoot
               if (Physics.Raycast(touchPos, out _hit))
               {
-                  PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
-                  FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                  playerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                  firePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
               }*/
             Shoot();
         }
@@ -82,8 +80,8 @@ public class Shouting : MonoBehaviour
             Ray touchPos = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(touchPos, out _hit))
         {
-                PlayerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
-                FirePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                playerPoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
+                firePoint.transform.LookAt(new Vector3(_hit.point.x, transform.position.y, _hit.point.z));
                 
             }
         Shoot();
@@ -105,13 +103,13 @@ public class Shouting : MonoBehaviour
                 closerEnemy = Distance;
             }
 
-            PlayerPoint.transform.LookAt(nearestenemy);
-            FirePoint.transform.LookAt(nearestenemy);
+            playerPoint.transform.LookAt(nearestenemy);
+            firePoint.transform.LookAt(nearestenemy);
         }
         
     }
 
-   void RotationAim()
+    private void RotationAim()
     {
         AutoAim();
         Shoot();
@@ -119,8 +117,8 @@ public class Shouting : MonoBehaviour
 
     public void Shoot()
     {
-    GameObject bullet = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
+    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     Rigidbody rb = bullet.GetComponent<Rigidbody>();
-    rb.AddForce(FirePoint.forward* bulletForce, ForceMode.Impulse);
+    rb.AddForce(firePoint.forward* bulletForce, ForceMode.Impulse);
     }
 }

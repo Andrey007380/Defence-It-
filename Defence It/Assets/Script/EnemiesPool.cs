@@ -3,34 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EnemiesPool : MonoBehaviour
 {
+    public static EnemiesPool Instance { get; private set; }
+
     //Int = key
-    Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
-    public Queue<GameObject> availableObjcts = new Queue<GameObject>();
+    [SerializeField] private Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
+    [SerializeField] private Queue<GameObject> availableObjcts = new Queue<GameObject>();
+    [SerializeField] private List<Pool> pools;
+
     [System.Serializable]
     public class Pool {
-        public int tag;
-        public GameObject prefab;
-        public int size;
+        public int Tag;
+        public GameObject Prefab;
+        public int Size;
     }
-
-
-    public List<Pool> pools;
-
-    public static EnemiesPool Instance { get; private set; }
-   
 
     public void Start()
     {
         foreach (Pool pool in pools)
         {
            
-            for (int i = 0; i < pool.size; i++)
+            for (int i = 0; i < pool.Size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab/* = Resources.Load<GameObject>("Spiders/prefabs/Sphere")*/);
+                GameObject obj = Instantiate(pool.Prefab/* = Resources.Load<GameObject>("Spiders/Prefabs/Sphere")*/);
                 obj.SetActive(false);
                 availableObjcts.Enqueue(obj);
             }
-            poolDictionary.Add(pool.tag, availableObjcts);
+            poolDictionary.Add(pool.Tag, availableObjcts);
         }
     }
     private void Awake()
@@ -38,15 +36,15 @@ public class EnemiesPool : MonoBehaviour
         Instance = this;
     }
     // Start is called before the first frame update
-    public GameObject GetFromPool(int tag, Vector3 position, Quaternion rotation)
+    public GameObject GetFromPool(int Tag, Vector3 position, Quaternion rotation)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(Tag))
         {
-            Debug.LogWarning("Pool with tag" + tag + "not exist");
+            Debug.LogWarning("Pool with Tag" + Tag + "not exist");
             return null;
         }
         //Get first object of the queue
-        GameObject ObjectToSpawn = poolDictionary[tag].Dequeue();
+        GameObject ObjectToSpawn = poolDictionary[Tag].Dequeue();
         ObjectToSpawn.SetActive(true);
         ObjectToSpawn.transform.position = position;
         ObjectToSpawn.transform.rotation = rotation;
@@ -54,17 +52,17 @@ public class EnemiesPool : MonoBehaviour
       
         return ObjectToSpawn;
     }
-    public void AddToPool(int tag, GameObject prefab)
+    public void AddToPool(int Tag, GameObject Prefab)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(Tag))
         {
-            Debug.LogWarning("Pool with tag" + tag + "not exist");
+            Debug.LogWarning("Pool with Tag" + Tag + "not exist");
             return;
         }
 
-        prefab.SetActive(false);
+        Prefab.SetActive(false);
         //Add to the pool
-       availableObjcts.Enqueue(prefab);
+       availableObjcts.Enqueue(Prefab);
 
     }
 }

@@ -9,15 +9,16 @@ public class PauseMenu : MonoBehaviour
 
     public static bool Paude = false;
     public static bool SettingsMenu = false;
-    public GameObject PauuseMenuUI;
     public GameObject DeatScreenAndAds;
-    public GameObject Settings;
-    public AudioMixer audioMixer;
-    public Image VolumeImage;
-    public Slider VolumeSlider;
-    public Sprite OffSound;
-    public Sprite OnSound;
-    public FixedJoystick rotationJoystic;
+
+    [SerializeField] private GameObject PauuseMenuUI;
+    [SerializeField] private GameObject Settings;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Image VolumeImage;
+    [SerializeField] private Slider VolumeSlider;
+    [SerializeField] private Sprite OffSound;
+    [SerializeField] private Sprite OnSound;
+    [SerializeField] private FixedJoystick rotationJoystic;
 
     public void SetVolume(float volume)
     {

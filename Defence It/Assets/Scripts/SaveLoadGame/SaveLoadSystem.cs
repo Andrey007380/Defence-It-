@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class SaveLoadSystem : MonoBehaviour
 {
-    [SerializeField] GameObject[] NpcandplayersData;
-    [SerializeField] GameObject SetingsData;
-    [SerializeField] GameObject CountersData;
-    [SerializeField] GameObject Enemymultiplyer;
+    [SerializeField] private GameObject[] NpcandplayersData;
+    [SerializeField] private GameObject SetingsData;
+    [SerializeField] private GameObject CountersData;
+    [SerializeField] private GameObject Enemymultiplyer;
 
     class SavedDataUnit{
-       public Transform transform { get; set; }
+        public Transform transform { get; set; }
         public GameStatsMechanics gameStatsMechanics { get; set; }
-         public string name { get; set; }
+        public string name { get; set; }
         public SavedDataUnit(string name,Transform transform,GameStatsMechanics gm)
         {
             this.name = name;

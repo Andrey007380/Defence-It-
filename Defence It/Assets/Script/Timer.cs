@@ -5,16 +5,17 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField]
-    public Text timerup;
-    public Text killedEnemies;
-    public TextMeshProUGUI dropcounter;
     public delegate void MonsterUpgrade();
     public static event MonsterUpgrade OnMonsterUpgrade;
-    public int Death {  set; get; } = 0;
-
+    public int Death { set; get; } = 0;
     public float current_time { set; get; } = 0;
     public int avgFrameRate;
+
+    [SerializeField] private Text timerup;
+    [SerializeField] private Text killedEnemies;
+    [SerializeField] private TextMeshProUGUI dropcounter;
+    
+    
     public void Update()
     {
         current_time += 1 * Time.deltaTime;

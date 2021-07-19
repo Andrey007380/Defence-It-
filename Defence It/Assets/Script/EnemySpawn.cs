@@ -6,12 +6,11 @@ using System.Linq;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] private int enemyMax = 50;
     private float spawnRadius = 40, time = 2f;
-    public int Enemysnow = 0;
-    public int enemyMax = 100;
+    private int enemysnow = 0;
     private bool maxReached = false; // Bool that stores the Information if the maximum is reached
-    public Vector3 spawnPos; //Spawning an enemy
+    private Vector3 spawnPos; //Spawning an enemy
     EnemiesPool EnemiesPool;
 
     
@@ -33,25 +32,25 @@ public class EnemySpawn : MonoBehaviour
 
                 EnemiesPool.Instance.GetFromPool(0, spawnPos, Quaternion.identity);
                 yield return new WaitForSeconds(time);
-                Enemysnow++; // increase the enemy counter   
+                enemysnow++; // increase the enemy counter   
             }
                 yield return null;
-            maxReached = Enemysnow >= enemyMax;
+            maxReached = enemysnow >= enemyMax;
             }
     }
     
     public void LowerMaxEnemys()
-        {
-            Enemysnow--;
+    {
+        enemysnow--;
 
-        }
-        private void OnEnable()
-        {
-            BulletMechanics.OnDeath += LowerMaxEnemys;
-        }
-        private void OnDisable()
-        {
-            BulletMechanics.OnDeath -= LowerMaxEnemys;
-        }
     }
+    private void OnEnable()
+    {
+        BulletMechanics.OnDeath += LowerMaxEnemys;
+    }
+    private void OnDisable()
+    {
+        BulletMechanics.OnDeath -= LowerMaxEnemys;
+    }
+}
 

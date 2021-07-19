@@ -7,17 +7,13 @@ public class SimlpeFolowingEnemy : MonoBehaviour/*, IRespawnEnemy*/
 {
     public FollowingEnemy EnemyBase;
     public GameObject Target;
-    private RaycastHit raycast;
     public LayerMask AttackMask;
     public LayerMask TargetMask;
     EnemyPriority enemyPriority;
     GameStatsMechanics gameStats;
 
-    private void Start()
-    {
-        
-       
-    }
+    private RaycastHit raycast;
+
     private void OnEnable()
     {
         gameStats = GetComponent<GameStatsMechanics>();

@@ -6,9 +6,6 @@ public class FollowPlayer : MonoBehaviour
     public Vector3 offset;
     public float SmoothFolow = 0.125f;
 
-    void Start()
-    {
-    }
     void FixedUpdate()
     {
         Vector3 desiredPosition = player.position + offset;

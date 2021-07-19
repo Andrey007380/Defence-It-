@@ -9,7 +9,7 @@ public class GameStatsMechanics : MonoBehaviour
     public float armor;
 
     public delegate void DeathZone();
-    public event DeathZone OnDeathZone;
+    public static event DeathZone OnDeathZone;
 
 
     public HealthBar healthBar;

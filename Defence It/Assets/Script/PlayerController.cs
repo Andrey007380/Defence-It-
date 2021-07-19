@@ -2,29 +2,30 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    public float moveSpeed = 100f;
-    public float angular; 
-
-    public float transformX;
-    public float transformY;
-
-    public float RotateX;
-    public float RotateY;
-
-    public FixedJoystick joystick;
-    public  FixedJoystick rotationJoystic;
+    public FixedJoystick rotationJoystic;
     public Rigidbody rigidbody;
+
+    [SerializeField] private float moveSpeed = 100f;
+    [SerializeField] private FixedJoystick joystick;
+
+    private float angular;
+
+    private float transformX;
+    private float transformY;
+
+    private float RotateX;
+    private float RotateY;
+   
     LineRenderer lineRenderer;
     public static PlayerController Instance { get; private set; }
 
-    void Awake()
+   private void Awake()
     {
         Instance = this;
        
     }
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         lineRenderer = rigidbody.GetComponent<LineRenderer>();
         rigidbody = GetComponent<Rigidbody>();
@@ -37,8 +38,7 @@ public class PlayerController : MonoBehaviour
             rigidbody.transform.rotation = Quaternion.Euler(new Vector3(0, angular, 0));
         }
     }
-    // Update is called once per frame
-    void FixedUpdate()
+   private void FixedUpdate()
     {
         transformX = joystick.Horizontal * moveSpeed;
         transformY = joystick.Vertical * moveSpeed;

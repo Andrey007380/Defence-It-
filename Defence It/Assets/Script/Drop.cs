@@ -7,14 +7,8 @@ public class Drop : MonoBehaviour
     {
         if (collision.tag.Equals("Player"))
         {
-
             Destroy(gameObject);
             bullets++;
-
-
         }
-
-
     }
-
 }
